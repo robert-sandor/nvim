@@ -1,6 +1,81 @@
 return {
 	"neovim/nvim-lspconfig",
+	dependencies = {
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"folke/neodev.nvim",
+	},
 	config = function()
+		require("mason").setup({})
+
+		local servers = {
+			lua_ls = {
+				Lua = {
+					diagnostics = { globals = { "vim" } },
+					runtime = { version = "LuaJIT" },
+					telemetry = { enable = false },
+					workspace = {
+						library = vim.api.nvim_get_runtime_file("", true),
+						checkThirdParty = false,
+					},
+				},
+			},
+			gopls = {},
+			-- rust_analyzer = {},
+			ansiblels = {},
+			bashls = {},
+			cssls = {},
+			dockerls = {},
+			docker_compose_language_service = {},
+			eslint = {},
+			html = {},
+			tsserver = {},
+			pyright = {},
+			svelte = {},
+			yamlls = {},
+		}
+
+		local mason_lspconfig = require("mason-lspconfig")
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+		local on_attach = function(_, buffer)
+			vim.api.nvim_buf_set_option(buffer, "omnifunc", "v:lua.MiniCompletion.completefunc_lsp")
+
+			vim.api.nvim_buf_create_user_command(buffer, "Format", function()
+				vim.lsp.buf.format({
+					async = true,
+					bufnr = buffer,
+					filter = function(formatter)
+						return formatter.name == "null-ls"
+					end,
+				})
+			end, { desc = "Format current buffer with LSP" })
+
+			vim.api.nvim_buf_create_user_command(buffer, "FormatSync", function()
+				vim.lsp.buf.format({
+					async = false,
+					bufnr = buffer,
+					filter = function(formatter)
+						return formatter.name == "null-ls"
+					end,
+				})
+			end, { desc = "Format current buffer with LSP" })
+		end
+
+		mason_lspconfig.setup({
+			ensure_installed = vim.tbl_keys(servers),
+		})
+
+		mason_lspconfig.setup_handlers({
+			function(server_name)
+				require("lspconfig")[server_name].setup({
+					capabilities = capabilities,
+					on_attach = on_attach,
+					settings = servers[server_name],
+				})
+			end,
+		})
+
 		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic" })
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
 		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
@@ -10,8 +85,6 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = augroup,
 			callback = function(event)
-				vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-
 				local function map(lhs, rhs, desc, mode)
 					mode = mode or "n"
 					vim.keymap.set(mode, lhs, rhs, {
@@ -22,7 +95,7 @@ return {
 
 				map("gD", vim.lsp.buf.declaration, "[G]o to [D]eclaration")
 
-				local telescope = require('telescope.builtin')
+				local telescope = require("telescope.builtin")
 				map("gd", telescope.lsp_definitions, "[G]o to [D]efinition")
 				map("gr", telescope.lsp_references, "[G]o to [R]eferences")
 				map("gi", telescope.lsp_implementations, "[G]o to [I]mplementation")
@@ -40,5 +113,5 @@ return {
 				end, "[C]ode [F]ormat")
 			end,
 		})
-	end
+	end,
 }

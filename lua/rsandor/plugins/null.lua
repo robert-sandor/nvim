@@ -7,10 +7,16 @@ return {
 
 		return {
 			sources = {
+				-- Lua formatting
+				null_ls.builtins.formatting.stylua,
+
 				-- Go formatting
 				null_ls.builtins.formatting.gofumpt,
 				null_ls.builtins.formatting.goimports_reviser,
 				null_ls.builtins.formatting.golines,
+
+				-- Rust formatting
+				null_ls.builtins.formatting.rustfmt,
 
 				-- Bash formatting
 				null_ls.builtins.formatting.shfmt,
@@ -27,10 +33,10 @@ return {
 						buffer = bufnr,
 						callback = function()
 							vim.lsp.buf.format({ bufnr = bufnr })
-						end
+						end,
 					})
 				end
-			end
+			end,
 		}
-	end
+	end,
 }
