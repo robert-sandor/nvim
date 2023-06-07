@@ -16,19 +16,19 @@ return {
 		require("mini.bufremove").setup()
 		require("mini.comment").setup()
 
-		require("mini.completion").setup({
-			window = {
-				info = {
-					border = "rounded",
-				},
-				signature = {
-					border = "rounded",
-				},
-			},
-			lsp_completion = {
-				source_func = "omnifunc",
-			},
-		})
+		-- require("mini.completion").setup({
+		-- 	window = {
+		-- 		info = {
+		-- 			border = "rounded",
+		-- 		},
+		-- 		signature = {
+		-- 			border = "rounded",
+		-- 		},
+		-- 	},
+		-- 	lsp_completion = {
+		-- 		source_func = "omnifunc",
+		-- 	},
+		-- })
 
 		require("mini.indentscope").setup()
 		require("mini.move").setup()
