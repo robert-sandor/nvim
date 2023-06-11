@@ -1,8 +1,10 @@
 return {
 	{
 		"catppuccin/nvim",
+		lazy = false,
+		priority = 1000,
 		name = "catppuccin",
-		init = function()
+		config = function()
 			require("catppuccin").setup({
 				integrations = {
 					mini = true,
@@ -11,10 +13,4 @@ return {
 			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
-	-- {
-	-- 	"folke/tokyonight.nvim",
-	-- 	init = function()
-	-- 		vim.cmd.colorscheme("tokyonight-night")
-	-- 	end,
-	-- },
 }
