@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.keymap.set("n", "<esc>", "<cmd>nohl<CR>", { desc = "remove search highlight" })
+
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Combine with line below" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move half page up" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move half page down" })
