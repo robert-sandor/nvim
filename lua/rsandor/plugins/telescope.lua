@@ -38,16 +38,6 @@ return {
 			telescope.load_extension("file_browser")
 			telescope.setup(opts)
 		end,
-		keys = {
-			{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "find files" },
-			{ "<leader>fa", "<cmd>Telescope find_files hidden=true no_ignore=true<CR>", desc = "find all files" },
-			{ "<leader>fw", "<cmd>Telescope live_grep<CR>", desc = "find text" },
-			{ "<leader>fo", "<cmd>Telescope buffers<CR>", desc = "find buffers" },
-			{ "<leader>fb", "<cmd>Telescope file_browser<CR>", desc = "file browser" },
-			{ "<leader>gf", "<cmd>Telescope git_files<CR>", desc = "git files" },
-			{ "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "git status" },
-			{ "<leader>gb", "<cmd>Telescope git_branches<CR>", desc = "git branches" },
-			{ "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "git commits" },
-		},
+		keys = require("rsandor.keymap").telescope,
 	},
 }
