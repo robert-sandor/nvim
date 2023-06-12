@@ -4,58 +4,50 @@ return {
 		tag = "0.1.1",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-file-browser.nvim",
+			"nvim-telescope/telescope-ui-select.nvim",
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
-		config = function()
-			require("telescope").setup({
-				defaults = {
-					mappings = {
-						i = {
-							["<esc>"] = require("telescope.actions").close,
-						},
+		opts = {
+			defaults = {
+				mappings = {
+					i = {
+						["<esc>"] = require("telescope.actions").close,
 					},
 				},
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({}),
-					},
-					["file_browser"] = {
-						hijack_netrw = true,
-					},
+			},
+			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_dropdown({}),
 				},
-			})
-
-			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[F]ind [F]iles" })
-			vim.keymap.set("n", "<leader>fa", function()
-				builtin.find_files({ hidden = true, no_ignore = true })
-			end, { desc = "[F]ind [A]ll files" })
-			vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "[F]ind [G]it Files" })
-			vim.keymap.set("n", "<leader>fo", builtin.buffers, { desc = "[F]ind [O]pen buffers" })
-			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind with [G]rep" })
-
-			vim.keymap.set("n", "<leader>gs", builtin.git_status, { desc = "[G]it [S]tatus" })
-			vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "[G]it [B]ranches" })
-			vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "[G]it [C]ommits" })
+				["file_browser"] = {
+					hijack_netrw = true,
+				},
+				["fzf"] = {
+					fuzzy = true,
+					override_generic_sorter = true,
+					override_file_sorter = true,
+					case_mode = "smart_case",
+				},
+			},
+		},
+		config = function(_, opts)
+			local telescope = require("telescope")
+			telescope.load_extension("fzf")
+			telescope.load_extension("ui-select")
+			telescope.load_extension("file_browser")
+			telescope.setup(opts)
 		end,
-	},
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		config = function()
-			require("telescope").load_extension("ui-select")
-		end,
-	},
-	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		config = function()
-			require("telescope").load_extension("file_browser")
-			vim.keymap.set(
-				"n",
-				"<leader>fb",
-				"<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
-				{ desc = "[F]ile [B]rowser" }
-			)
-		end,
+		keys = {
+			{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "find files" },
+			{ "<leader>fa", "<cmd>Telescope find_files hidden=true no_ignore=true<CR>", desc = "find all files" },
+			{ "<leader>fw", "<cmd>Telescope live_grep<CR>", desc = "find text" },
+			{ "<leader>fo", "<cmd>Telescope buffers<CR>", desc = "find buffers" },
+			{ "<leader>fb", "<cmd>Telescope file_browser<CR>", desc = "file browser" },
+			{ "<leader>gf", "<cmd>Telescope git_files<CR>", desc = "git files" },
+			{ "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "git status" },
+			{ "<leader>gb", "<cmd>Telescope git_branches<CR>", desc = "git branches" },
+			{ "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "git commits" },
+		},
 	},
 }
