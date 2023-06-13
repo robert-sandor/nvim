@@ -1,5 +1,5 @@
 return {
-	{ "echasnovski/mini.ai", config = true },
+	{ "echasnovski/mini.ai",          opts = {} },
 	{
 		"echasnovski/mini.basics",
 		opts = {
@@ -11,24 +11,12 @@ return {
 			},
 		},
 	},
-	{
-		"echasnovski/mini.bufremove",
-		opts = {},
-		keys = {
-			{
-				"<leader>bd",
-				function()
-					require("mini.bufremove").delete()
-				end,
-				desc = "[B]uffer [D]elete",
-			},
-		},
-	},
-	{ "echasnovski/mini.comment", config = true },
-	{ "echasnovski/mini.indentscope", config = true },
-	{ "echasnovski/mini.move", config = true },
-	{ "echasnovski/mini.pairs", config = true },
-	{ "echasnovski/mini.splitjoin", config = true },
+	{ "echasnovski/mini.bufremove",   opts = {}, keys = require("rsandor.keymap").mini_bufremove },
+	{ "echasnovski/mini.comment",     opts = {}, keys = require("rsandor.keymap").mini_comment },
+	{ "echasnovski/mini.indentscope", opts = {} },
+	{ "echasnovski/mini.move",        opts = {}, keys = require("rsandor.keymap").mini_move },
+	{ "echasnovski/mini.pairs",       opts = {} },
+	{ "echasnovski/mini.splitjoin",   opts = {}, keys = require("rsandor.keymap").mini_splitjoin },
 	{
 		"echasnovski/mini.starter",
 		opts = function()
@@ -48,14 +36,16 @@ return {
 		"echasnovski/mini.surround",
 		opts = {
 			mappings = {
-				add = "gsa", -- Add surrounding in Normal and Visual modes
-				delete = "gsd", -- Delete surrounding
-				find = "gsf", -- Find surrounding (to the right)
-				find_left = "gsF", -- Find surrounding (to the left)
-				highlight = "gsh", -- Highlight surrounding
-				replace = "gsr", -- Replace surrounding
-				update_n_lines = "gsn", -- Update `n_lines`
+				add = "gsa",
+				delete = "gsd",
+				find = "gsf",
+				find_left = "gsF",
+				highlight = "gsh",
+				replace = "gsr",
+				update_n_lines = "gsn",
 			},
+			n_lines = 100,
 		},
+		keys = require("rsandor.keymap").mini_surround,
 	},
 }

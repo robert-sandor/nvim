@@ -1,35 +1,36 @@
 local keymaps = {
 	base = {
-		{ "<esc>", "<cmd>nohl<CR>", desc = "remove search highlight" },
-		{ "J", "mzJ`z", desc = "Combine with line below" },
-		{ "<C-d>", "<C-d>zz", desc = "Move half page up" },
-		{ "<C-u>", "<C-u>zz", desc = "Move half page down" },
-		{ "n", "nzzzv", desc = "Next occurrence" },
-		{ "N", "Nzzzv", desc = "Previous occurrence" },
+		{ "<esc>",     "<cmd>nohl<CR>",           desc = "remove search highlight" },
+		{ "J",         "mzJ`z",                   desc = "Combine with line below" },
+		{ "<C-d>",     "<C-d>zz",                 desc = "Move half page up" },
+		{ "<C-u>",     "<C-u>zz",                 desc = "Move half page down" },
+		{ "n",         "nzzzv",                   desc = "Next occurrence" },
+		{ "N",         "Nzzzv",                   desc = "Previous occurrence" },
 		{ "<leader>e", vim.diagnostic.open_float, desc = "open diagnostic" },
-		{ "[d", vim.diagnostic.goto_prev, desc = "previous diagnostic" },
-		{ "]d", vim.diagnostic.goto_next, desc = "next diagnostic" },
-		{ "Q", "<nop>" },
+		{ "[d",        vim.diagnostic.goto_prev,  desc = "previous diagnostic" },
+		{ "]d",        vim.diagnostic.goto_next,  desc = "next diagnostic" },
+		{ "Q",         "<nop>" },
 	},
 	telescope = {
-		{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "find files" },
+		{ "<leader>ff", "<cmd>Telescope find_files<CR>",                            desc = "find files" },
 		{ "<leader>fa", "<cmd>Telescope find_files hidden=true no_ignore=true<CR>", desc = "find all files" },
-		{ "<leader>fw", "<cmd>Telescope live_grep<CR>", desc = "find text" },
-		{ "<leader>fo", "<cmd>Telescope buffers<CR>", desc = "find buffers" },
+		{ "<leader>fw", "<cmd>Telescope live_grep<CR>",                             desc = "find text" },
+		{ "<leader>fo", "<cmd>Telescope buffers<CR>",                               desc = "find buffers" },
+		{ "<leader>fm", "<cmd>Telescope notify<CR>",                                desc = "find notifications" },
 		{
 			"<leader>fb",
 			"<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
 			desc = "file browser",
 		},
-		{ "<leader>gf", "<cmd>Telescope git_files<CR>", desc = "git files" },
-		{ "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "git status" },
+		{ "<leader>gf", "<cmd>Telescope git_files<CR>",    desc = "git files" },
+		{ "<leader>gs", "<cmd>Telescope git_status<CR>",   desc = "git status" },
 		{ "<leader>gb", "<cmd>Telescope git_branches<CR>", desc = "git branches" },
-		{ "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "git commits" },
+		{ "<leader>gc", "<cmd>Telescope git_commits<CR>",  desc = "git commits" },
 	},
 	dap = {
 		{ "<leader>db", "<cmd>DapToggleBreakpoint<CR>", desc = "toggle breakpoint" },
-		{ "<leader>dc", "<cmd>DapContinue<CR>", desc = "continue" },
-		{ "<leader>dT", "<cmd>DapTerminate<CR>", desc = "terminate" },
+		{ "<leader>dc", "<cmd>DapContinue<CR>",         desc = "continue" },
+		{ "<leader>dT", "<cmd>DapTerminate<CR>",        desc = "terminate" },
 		{
 			"<leader>dl",
 			function()
@@ -58,10 +59,10 @@ local keymaps = {
 		},
 	},
 	trouble = {
-		{ "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+		{ "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
 		{ "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-		{ "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-		{ "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
+		{ "<leader>xL", "<cmd>TroubleToggle loclist<cr>",               desc = "Location List (Trouble)" },
+		{ "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>",              desc = "Quickfix List (Trouble)" },
 		{
 			"[q",
 			function()
@@ -86,14 +87,14 @@ local keymaps = {
 		},
 	},
 	gitsigns = {
-		{ "[h", "<cmd>Gitsigns prev_hunk<CR>", desc = "previous git hunk" },
-		{ "]h", "<cmd>Gitsigns next_hunk<CR>", desc = "next git hunk" },
-		{ "<leader>ghs", "<cmd>Gitsigns stage_hunk<CR>", desc = "stage hunk", mode = { "n", "v" } },
-		{ "<leader>ghS", "<cmd>Gitsigns stage_buffer<CR>", desc = "stage buffer", mode = { "n", "v" } },
-		{ "<leader>ghr", "<cmd>Gitsigns reset_hunk<CR>", desc = "reset hunk" },
+		{ "[h",          "<cmd>Gitsigns prev_hunk<CR>",    desc = "previous git hunk" },
+		{ "]h",          "<cmd>Gitsigns next_hunk<CR>",    desc = "next git hunk" },
+		{ "<leader>ghs", "<cmd>Gitsigns stage_hunk<CR>",   desc = "stage hunk",       mode = { "n", "v" } },
+		{ "<leader>ghS", "<cmd>Gitsigns stage_buffer<CR>", desc = "stage buffer",     mode = { "n", "v" } },
+		{ "<leader>ghr", "<cmd>Gitsigns reset_hunk<CR>",   desc = "reset hunk" },
 		{ "<leader>ghR", "<cmd>Gitsigns reset_buffer<CR>", desc = "reset buffer" },
 		{ "<leader>ghp", "<cmd>Gitsigns preview_hunk<CR>", desc = "preview hunk" },
-		{ "<leader>ghd", "<cmd>Gitsigns diffthis<CR>", desc = "diff this" },
+		{ "<leader>ghd", "<cmd>Gitsigns diffthis<CR>",     desc = "diff this" },
 	},
 	todo_comments = {
 		{
@@ -110,17 +111,17 @@ local keymaps = {
 			end,
 			desc = "Previous todo comment",
 		},
-		{ "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-		{ "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-		{ "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "[F]ind [T]odos" },
+		{ "<leader>xt", "<cmd>TodoTrouble<cr>",                           desc = "Todo (Trouble)" },
+		{ "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>",   desc = "Todo/Fix/Fixme (Trouble)" },
+		{ "<leader>ft", "<cmd>TodoTelescope<cr>",                         desc = "[F]ind [T]odos" },
 		{ "<leader>fT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "[F]ind [T]odo/Fix/Fixme" },
 	},
 	rust = {
 		{ "<leader>ra", "<cmd>RustHoverActions<CR>", desc = "actions" },
-		{ "<leader>rr", "<cmd>RustRunnables<CR>", desc = "runnables" },
-		{ "<leader>ru", "<cmd>RustMoveItemUp<CR>", desc = "move item up" },
-		{ "<leader>rd", "<cmd>RustMoveItemUp<CR>", desc = "move item down" },
-		{ "<leader>rC", "<cmd>RustOpenCargo<CR>", desc = "open cargo.toml" },
+		{ "<leader>rr", "<cmd>RustRunnables<CR>",    desc = "runnables" },
+		{ "<leader>ru", "<cmd>RustMoveItemUp<CR>",   desc = "move item up" },
+		{ "<leader>rd", "<cmd>RustMoveItemUp<CR>",   desc = "move item down" },
+		{ "<leader>rC", "<cmd>RustOpenCargo<CR>",    desc = "open cargo.toml" },
 	},
 	rust_crates = {
 		{
@@ -232,13 +233,13 @@ local keymaps = {
 		},
 	},
 	lsp = {
-		{ "gD", vim.lsp.buf.declaration, desc = "go to declaration" },
-		{ "K", vim.lsp.buf.hover, desc = "show docs" },
-		{ "gd", "<cmd>Telescope lsp_definitions<CR>", desc = "go to definitions" },
-		{ "gr", "<cmd>Telescope lsp_references<CR>", desc = "go to references" },
-		{ "gi", "<cmd>Telescope lsp_implementations<CR>", desc = "go to implementations" },
-		{ "gt", "<cmd>Telescope lsp_type_definitions<CR>", desc = "go to type definitions" },
-		{ "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", desc = "find symbols in document" },
+		{ "gD",         vim.lsp.buf.declaration,                    desc = "go to declaration" },
+		{ "K",          vim.lsp.buf.hover,                          desc = "show docs" },
+		{ "gd",         "<cmd>Telescope lsp_definitions<CR>",       desc = "go to definitions" },
+		{ "gr",         "<cmd>Telescope lsp_references<CR>",        desc = "go to references" },
+		{ "gi",         "<cmd>Telescope lsp_implementations<CR>",   desc = "go to implementations" },
+		{ "gt",         "<cmd>Telescope lsp_type_definitions<CR>",  desc = "go to type definitions" },
+		{ "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>",  desc = "find symbols in document" },
 		{ "<leader>fS", "<cmd>Telescope lsp_workspace_symbols<CR>", desc = "find symbols in workspace" },
 		{
 			"<leader>ca",
@@ -246,7 +247,7 @@ local keymaps = {
 			desc = "code actions",
 			mode = { "n", "v" },
 		},
-		{ "<leader>cr", vim.lsp.buf.rename, desc = "rename symbol" },
+		{ "<leader>cr", vim.lsp.buf.rename,       desc = "rename symbol" },
 		{
 			"<leader>cf",
 			function()
@@ -255,6 +256,41 @@ local keymaps = {
 			desc = "format code",
 		},
 		{ "<leader>cl", vim.lsp.codelens.refresh, desc = "refresh codelens" },
+	},
+	mini_splitjoin = {
+		{ "gS", desc = "toggle argument split" },
+	},
+	mini_move = {
+		{ "<M-h>", desc = "move selection left",  mode = "v" },
+		{ "<M-l>", desc = "move selection right", mode = "v" },
+		{ "<M-j>", desc = "move selection down",  mode = "v" },
+		{ "<M-k>", desc = "move selection up",    mode = "v" },
+		{ "<M-h>", desc = "move line left" },
+		{ "<M-l>", desc = "move line right" },
+		{ "<M-j>", desc = "move line down" },
+		{ "<M-k>", desc = "move line up" },
+	},
+	mini_comment = {
+		{ "gc",  desc = "toggle comment",     mode = "v" },
+		{ "gcc", desc = "toggle comment line" },
+	},
+	mini_bufremove = {
+		{
+			"<leader>bd",
+			function()
+				require("mini.bufremove").delete()
+			end,
+			desc = "[B]uffer [D]elete",
+		},
+	},
+	mini_surround = {
+		{ "gsa", desc = "add surrounding",       mode = { "n", "v" } },
+		{ "gsd", desc = "delete surrounding" },
+		{ "gsf", desc = "find right surrounding" },
+		{ "gsF", desc = "find left surrounding" },
+		{ "gsh", desc = "highlight surrounding" },
+		{ "gsr", desc = "replace surrounding" },
+		{ "gsn", desc = "update n lines" },
 	},
 }
 
