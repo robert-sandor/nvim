@@ -18,7 +18,7 @@ return {
 			},
 			extensions = {
 				["ui-select"] = {
-					require("telescope.themes").get_dropdown({}),
+					require("telescope.themes").get_cursor(),
 				},
 				["file_browser"] = {
 					hijack_netrw = true,
@@ -33,10 +33,10 @@ return {
 		},
 		config = function(_, opts)
 			local telescope = require("telescope")
+			telescope.setup(opts)
 			telescope.load_extension("fzf")
 			telescope.load_extension("ui-select")
 			telescope.load_extension("file_browser")
-			telescope.setup(opts)
 		end,
 		keys = require("rsandor.keymap").telescope,
 	},
