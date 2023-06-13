@@ -6,6 +6,9 @@ local keymaps = {
 		{ "<C-u>", "<C-u>zz", desc = "Move half page down" },
 		{ "n", "nzzzv", desc = "Next occurrence" },
 		{ "N", "Nzzzv", desc = "Previous occurrence" },
+		{ "<leader>e", vim.diagnostic.open_float, desc = "open diagnostic" },
+		{ "[d", vim.diagnostic.goto_prev, desc = "previous diagnostic" },
+		{ "]d", vim.diagnostic.goto_next, desc = "next diagnostic" },
 		{ "Q", "<nop>" },
 	},
 	telescope = {
@@ -227,6 +230,31 @@ local keymaps = {
 			end,
 			desc = "crates.io",
 		},
+	},
+	lsp = {
+		{ "gD", vim.lsp.buf.declaration, desc = "go to declaration" },
+		{ "K", vim.lsp.buf.hover, desc = "show docs" },
+		{ "gd", "<cmd>Telescope lsp_definitions<CR>", desc = "go to definitions" },
+		{ "gr", "<cmd>Telescope lsp_references<CR>", desc = "go to references" },
+		{ "gi", "<cmd>Telescope lsp_implementations<CR>", desc = "go to implementations" },
+		{ "gt", "<cmd>Telescope lsp_type_definitions<CR>", desc = "go to type definitions" },
+		{ "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", desc = "find symbols in document" },
+		{ "<leader>fS", "<cmd>Telescope lsp_workspace_symbols<CR>", desc = "find symbols in workspace" },
+		{
+			"<leader>ca",
+			vim.lsp.buf.code_action,
+			desc = "code actions",
+			mode = { "n", "v" },
+		},
+		{ "<leader>cr", vim.lsp.buf.rename, desc = "rename symbol" },
+		{
+			"<leader>cf",
+			function()
+				vim.lsp.buf.format({ async = true })
+			end,
+			desc = "format code",
+		},
+		{ "<leader>cl", vim.lsp.codelens.refresh, desc = "refresh codelens" },
 	},
 }
 
