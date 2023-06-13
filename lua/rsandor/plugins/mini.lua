@@ -29,7 +29,21 @@ return {
 	{ "echasnovski/mini.move", config = true },
 	{ "echasnovski/mini.pairs", config = true },
 	{ "echasnovski/mini.splitjoin", config = true },
-	{ "echasnovski/mini.starter", config = true },
+	{
+		"echasnovski/mini.starter",
+		opts = function()
+			local starter = require("mini.starter")
+			return {
+				items = {
+					starter.sections.telescope(),
+				},
+				content_hooks = {
+					starter.gen_hook.adding_bullet(),
+					starter.gen_hook.aligning("center", "center"),
+				},
+			}
+		end,
+	},
 	{
 		"echasnovski/mini.surround",
 		opts = {
