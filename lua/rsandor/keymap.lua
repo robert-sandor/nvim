@@ -1,3 +1,4 @@
+-- stylua: ignore
 local keymaps = {
 	base = {
 		{ "<esc>",     "<cmd>nohl<CR>",           desc = "remove search highlight" },
@@ -28,35 +29,23 @@ local keymaps = {
 		{ "<leader>gc", "<cmd>Telescope git_commits<CR>",  desc = "git commits" },
 	},
 	dap = {
-		{ "<leader>db", "<cmd>DapToggleBreakpoint<CR>", desc = "toggle breakpoint" },
-		{ "<leader>dc", "<cmd>DapContinue<CR>",         desc = "continue" },
-		{ "<leader>dT", "<cmd>DapTerminate<CR>",        desc = "terminate" },
-		{
-			"<leader>dl",
-			function()
-				require("dap").run_last()
-			end,
-			desc = "run last",
-		},
-		{
-			"<leader>dh",
-			function()
-				require("dap.ui.widgets").hover()
-			end,
-			desc = "hover",
-		},
-		{ "<leader>dss", "<cmd>DapStepOver<CR>", desc = "step over" },
-		{ "<leader>dsi", "<cmd>DapStepInto<CR>", desc = "step into" },
-		{ "<leader>dso", "<cmd>DapStepOver<CR>", desc = "step over" },
+		{ "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "toggle breakpoint" },
+		{ "<leader>dc", function() require("dap").continue() end,          desc = "continue" },
+		{ "<leader>dC", function() require("dap").run_to_cursor() end,     desc = "run to cursor" },
+		{ "<leader>dl", function() require("dap").run_last() end,          desc = "run last", },
+		{ "<leader>dO", function() require("dap").step_over() end,         desc = "step over" },
+		{ "<leader>di", function() require("dap").step_into() end,         desc = "step into" },
+		{ "<leader>do", function() require("dap").step_out() end,          desc = "step out" },
+		{ "<leader>dj", function() require("dap").down() end,              desc = "go down in stack" },
+		{ "<leader>dk", function() require("dap").up() end,                desc = "go up in stack" },
+		{ "<leader>dp", function() require("dap").pause() end,             desc = "pause thread" },
+		{ "<leader>dt", function() require("dap").terminate() end,         desc = "terminate" },
+		{ "<leader>dr", function() require("dap").repl.toggle() end,       desc = "toggle repl" },
+		{ "<leader>dh", function() require("dap.ui.widgets").hover() end,  desc = "hover" },
 	},
 	dap_ui = {
-		{
-			"<leader>dut",
-			function()
-				require("dapui").toggle()
-			end,
-			desc = "toggle ui",
-		},
+		{ "<leader>du", function() require("dapui").toggle() end, desc = "toggle ui", },
+		{ "<leader>de", function() require("dapui").eval() end,   desc = "eval",      mode = { "n", "v" }, },
 	},
 	trouble = {
 		{ "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
@@ -97,24 +86,10 @@ local keymaps = {
 		{ "<leader>ghd", "<cmd>Gitsigns diffthis<CR>",     desc = "diff this" },
 	},
 	todo_comments = {
-		{
-			"]t",
-			function()
-				require("todo-comments").jump_next()
-			end,
-			desc = "Next todo comment",
-		},
-		{
-			"[t",
-			function()
-				require("todo-comments").jump_prev()
-			end,
-			desc = "Previous todo comment",
-		},
-		{ "<leader>xt", "<cmd>TodoTrouble<cr>",                           desc = "Todo (Trouble)" },
-		{ "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>",   desc = "Todo/Fix/Fixme (Trouble)" },
-		{ "<leader>ft", "<cmd>TodoTelescope<cr>",                         desc = "[F]ind [T]odos" },
-		{ "<leader>fT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "[F]ind [T]odo/Fix/Fixme" },
+		{ "]t",         function() require("todo-comments").jump_next() end, desc = "next todo comment", },
+		{ "[t",         function() require("todo-comments").jump_prev() end, desc = "previous todo comment", },
+		{ "<leader>xt", "<cmd>TodoTrouble<cr>",                              desc = "todo" },
+		{ "<leader>ft", "<cmd>TodoTelescope<cr>",                            desc = "find todos" },
 	},
 	rust = {
 		{ "<leader>ra", "<cmd>RustHoverActions<CR>", desc = "actions" },
@@ -124,113 +99,21 @@ local keymaps = {
 		{ "<leader>rC", "<cmd>RustOpenCargo<CR>",    desc = "open cargo.toml" },
 	},
 	rust_crates = {
-		{
-			"rct",
-			function()
-				require("crates").toggle()
-			end,
-			desc = "toggle",
-		},
-		{
-			"rcr",
-			function()
-				require("crates").reload()
-			end,
-			desc = "reload",
-		},
-		{
-			"rcv",
-			function()
-				require("crates").show_versions_popup()
-			end,
-			desc = "versions popup",
-		},
-		{
-			"rcf",
-			function()
-				require("crates").show_features_popup()
-			end,
-			desc = "features popup",
-		},
-		{
-			"rcd",
-			function()
-				require("crates").show_dependencies_popup()
-			end,
-			desc = "dependencies popup",
-		},
-		{
-			"rcu",
-			function()
-				require("crates").update_crate()
-			end,
-			desc = "update crate",
-		},
-		{
-			"rcu",
-			function()
-				require("crates").update_crates()
-			end,
-			desc = "update crate",
-			mode = "v",
-		},
-		{
-			"rca",
-			function()
-				require("crates").update_all_crates()
-			end,
-			desc = "update crates",
-		},
-		{
-			"rcU",
-			function()
-				require("crates").upgrade_crate()
-			end,
-			desc = "upgrade crate",
-		},
-		{
-			"rcU",
-			function()
-				require("crates").upgrade_crates()
-			end,
-			desc = "upgrade crate",
-			mode = "v",
-		},
-		{
-			"rcA",
-			function()
-				require("crates").upgrade_all_crates()
-			end,
-			desc = "upgrade crates",
-		},
-		{
-			"rcH",
-			function()
-				require("crates").open_homepage()
-			end,
-			desc = "homepage",
-		},
-		{
-			"rcR",
-			function()
-				require("crates").open_repository()
-			end,
-			desc = "repository",
-		},
-		{
-			"rcD",
-			function()
-				require("crates").open_documentation()
-			end,
-			desc = "documentation",
-		},
-		{
-			"rcC",
-			function()
-				require("crates").open_crates_io()
-			end,
-			desc = "crates.io",
-		},
+		{ "rct", function() require("crates").toggle() end,                  desc = "toggle", },
+		{ "rcr", function() require("crates").reload() end,                  desc = "reload", },
+		{ "rcv", function() require("crates").show_versions_popup() end,     desc = "versions popup", },
+		{ "rcf", function() require("crates").show_features_popup() end,     desc = "features popup", },
+		{ "rcd", function() require("crates").show_dependencies_popup() end, desc = "dependencies popup", },
+		{ "rcu", function() require("crates").update_crate() end,            desc = "update crate", },
+		{ "rcu", function() require("crates").update_crates() end,           desc = "update crate",       mode = "v", },
+		{ "rca", function() require("crates").update_all_crates() end,       desc = "update crates", },
+		{ "rcU", function() require("crates").upgrade_crate() end,           desc = "upgrade crate", },
+		{ "rcU", function() require("crates").upgrade_crates() end,          desc = "upgrade crate",      mode = "v", },
+		{ "rcA", function() require("crates").upgrade_all_crates() end,      desc = "upgrade crates", },
+		{ "rcH", function() require("crates").open_homepage() end,           desc = "homepage", },
+		{ "rcR", function() require("crates").open_repository() end,         desc = "repository", },
+		{ "rcD", function() require("crates").open_documentation() end,      desc = "documentation", },
+		{ "rcC", function() require("crates").open_crates_io() end,          desc = "crates.io", },
 	},
 	lsp = {
 		{ "gD",         vim.lsp.buf.declaration,                    desc = "go to declaration" },
@@ -247,15 +130,9 @@ local keymaps = {
 			desc = "code actions",
 			mode = { "n", "v" },
 		},
-		{ "<leader>cr", vim.lsp.buf.rename,       desc = "rename symbol" },
-		{
-			"<leader>cf",
-			function()
-				vim.lsp.buf.format({ async = true })
-			end,
-			desc = "format code",
-		},
-		{ "<leader>cl", vim.lsp.codelens.refresh, desc = "refresh codelens" },
+		{ "<leader>cr", vim.lsp.buf.rename,                                  desc = "rename symbol" },
+		{ "<leader>cf", function() vim.lsp.buf.format({ async = true }) end, desc = "format code", },
+		{ "<leader>cl", vim.lsp.codelens.refresh,                            desc = "refresh codelens" },
 	},
 	mini_splitjoin = {
 		{ "gS", desc = "toggle argument split" },
@@ -275,13 +152,7 @@ local keymaps = {
 		{ "gcc", desc = "toggle comment line" },
 	},
 	mini_bufremove = {
-		{
-			"<leader>bd",
-			function()
-				require("mini.bufremove").delete()
-			end,
-			desc = "[B]uffer [D]elete",
-		},
+		{ "<leader>bd", function() require("mini.bufremove").delete() end, desc = "[B]uffer [D]elete", },
 	},
 	mini_surround = {
 		{ "gsa", desc = "add surrounding",       mode = { "n", "v" } },
