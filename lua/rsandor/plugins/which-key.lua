@@ -5,6 +5,7 @@ return {
 			mode = { "n", "v" },
 			["]"] = { name = "+next" },
 			["["] = { name = "+prev" },
+			["gc"] = { name = "+comment" },
 			["<leader>c"] = { name = "+code" },
 			["<leader>d"] = { name = "+debug" },
 			["<leader>ds"] = { name = "+step" },
@@ -15,6 +16,7 @@ return {
 			["<leader>rc"] = { name = "+crates" },
 			["<leader>x"] = { name = "+trouble" },
 			["<leader>s"] = { name = "+surround" },
+			["<leader>b"] = { name = "+buffer" },
 		},
 	},
 	config = function(_, opts)
