@@ -15,12 +15,32 @@ return {
 				},
 			},
 			sections = {
-				lualine_a = { "mode" },
-				lualine_b = { "branch", "diff" },
-				lualine_c = { "filename" },
-				lualine_x = { "encoding", "filetype" },
-				lualine_y = { "diagnostics" },
-				lualine_z = { "progress", "location" },
+				lualine_a = {
+					"mode",
+				},
+				lualine_b = {
+					{
+						function()
+							return "󰑋 " .. require("noice").api.status.mode.get()
+						end,
+						cond = function()
+							return package.loaded["noice"] and require("noice").api.status.mode.has()
+						end,
+					},
+				},
+				lualine_c = { "branch", "diff" },
+				lualine_x = { "diagnostics", "location" },
+				lualine_y = {
+					{
+						function()
+							return " " .. require("dap").status()
+						end,
+						cond = function()
+							return package.loaded["dap"] and require("dap").status() ~= ""
+						end,
+					},
+				},
+				lualine_z = { { "filetype", icon_only = true, colored = false }, { "filename", path = 1 } },
 			},
 			inactive_sections = {
 				lualine_a = {},
