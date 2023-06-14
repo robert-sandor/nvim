@@ -155,13 +155,13 @@ local keymaps = {
 		{ "<leader>bd", function() require("mini.bufremove").delete() end, desc = "[B]uffer [D]elete", },
 	},
 	mini_surround = {
-		{ "gsa", desc = "add surrounding",       mode = { "n", "v" } },
-		{ "gsd", desc = "delete surrounding" },
-		{ "gsf", desc = "find right surrounding" },
-		{ "gsF", desc = "find left surrounding" },
-		{ "gsh", desc = "highlight surrounding" },
-		{ "gsr", desc = "replace surrounding" },
-		{ "gsn", desc = "update n lines" },
+		{ "<leader>sa", desc = "add surrounding",       mode = { "n", "v" } },
+		{ "<leader>sd", desc = "delete surrounding" },
+		{ "<leader>sf", desc = "find right surrounding" },
+		{ "<leader>sF", desc = "find left surrounding" },
+		{ "<leader>sh", desc = "highlight surrounding" },
+		{ "<leader>sr", desc = "replace surrounding" },
+		{ "<leader>sn", desc = "update n lines" },
 	},
 }
 

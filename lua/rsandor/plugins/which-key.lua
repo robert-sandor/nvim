@@ -14,7 +14,8 @@ return {
 			["<leader>r"] = { name = "+rust" },
 			["<leader>rc"] = { name = "+crates" },
 			["<leader>x"] = { name = "+trouble" },
-		}
+			["<leader>s"] = { name = "+surround" },
+		},
 	},
 	config = function(_, opts)
 		vim.o.timeout = true
