@@ -24,6 +24,9 @@ return {
 
 				-- JS, TS, JSON, YAML, etc. formatting
 				null_ls.builtins.formatting.prettier,
+
+				-- gitsigns
+				null_ls.builtins.code_actions.gitsigns,
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
