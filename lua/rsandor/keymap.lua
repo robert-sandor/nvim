@@ -167,6 +167,10 @@ local keymaps = {
 		{ "<leader>sr", desc = "replace surrounding" },
 		{ "<leader>sn", desc = "update n lines" },
 	},
+	flash = {
+		{ "s", function() require("flash").jump() end,       desc = "jump (flash)",       mode = { "n", "x", "o" } },
+		{ "S", function() require("flash").treesitter() end, desc = "treesitter (flash)", mode = { "n", "x", "o" } },
+	}
 }
 
 vim.g.mapleader = " "
