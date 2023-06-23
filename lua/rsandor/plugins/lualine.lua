@@ -50,6 +50,11 @@ return {
 				lualine_y = {},
 				lualine_z = {},
 			},
+			tabline = {
+				lualine_c = {
+					{ "buffers", symbols = { modified = " 󰑋 ", alternate_file = "", directory = " 󰉋 " } },
+				},
+			},
 		},
 	},
 }
