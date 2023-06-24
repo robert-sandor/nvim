@@ -11,9 +11,8 @@ local keymaps = {
 		{ "[d",         vim.diagnostic.goto_prev,  desc = "previous diagnostic" },
 		{ "]d",         vim.diagnostic.goto_next,  desc = "next diagnostic" },
 		{ "<Tab>",      "<cmd>bnext<CR>",          desc = "next buffer" },
-		{ "<leader>bn", "<cmd>bnext<CR>",          desc = "next buffer" },
 		{ "<S-Tab>",    "<cmd>bprev<CR>",          desc = "previous buffer" },
-		{ "<leader>bp", "<cmd>bprev<CR>",          desc = "previous buffer" },
+		{ "<leader>bn", "<cmd>enew<CR>",           desc = "new buffer" },
 		{ "Q",          "<nop>" },
 	},
 	telescope = {
@@ -156,7 +155,7 @@ local keymaps = {
 		{ "gcc", desc = "toggle comment line" },
 	},
 	mini_bufremove = {
-		{ "<leader>bd", function() require("mini.bufremove").delete() end, desc = "[B]uffer [D]elete", },
+		{ "<leader>bd", function() require("mini.bufremove").delete() end, desc = "buffer delete", },
 	},
 	mini_surround = {
 		{ "<leader>sa", desc = "add surrounding",       mode = { "n", "v" } },
