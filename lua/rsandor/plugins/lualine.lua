@@ -52,7 +52,11 @@ return {
 			},
 			tabline = {
 				lualine_c = {
-					{ "buffers", symbols = { modified = " 󰑋 ", alternate_file = "", directory = " 󰉋 " } },
+					{
+						"buffers",
+						show_filename_only = false,
+						symbols = { modified = " 󰑋 ", alternate_file = "", directory = " 󰉋 " },
+					},
 				},
 			},
 		},
