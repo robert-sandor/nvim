@@ -169,7 +169,13 @@ local keymaps = {
 	flash = {
 		{ "s", function() require("flash").jump() end,       desc = "jump (flash)",       mode = { "n", "x", "o" } },
 		{ "S", function() require("flash").treesitter() end, desc = "treesitter (flash)", mode = { "n", "x", "o" } },
-	}
+	},
+	go = {
+		{ "<leader>oe", "<cmd>GoIfErr<CR>",       desc = "add go if err" },
+		{ "<leader>oi", "<cmd>GoImpl<CR>",        desc = "add go implementation" },
+		{ "<leader>oj", "<cmd>GoTagAdd json<CR>", desc = "add json tag" },
+		{ "<leader>oy", "<cmd>GoTagAdd yaml<CR>", desc = "add yaml tag" },
+	},
 }
 
 vim.g.mapleader = " "

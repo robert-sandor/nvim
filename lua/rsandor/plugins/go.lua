@@ -16,5 +16,6 @@ return {
 			vim.cmd([[silent! GoInstallDeps]])
 		end,
 		opts = {},
+		keys = require("rsandor.keymap").go,
 	},
 }

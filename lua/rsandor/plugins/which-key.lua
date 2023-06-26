@@ -17,6 +17,7 @@ return {
 			["<leader>x"] = { name = "+trouble" },
 			["<leader>s"] = { name = "+surround" },
 			["<leader>b"] = { name = "+buffer" },
+			["<leader>o"] = { name = "+go" },
 		},
 	},
 	config = function(_, opts)
