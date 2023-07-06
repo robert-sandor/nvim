@@ -8,8 +8,6 @@ return {
 			["gc"] = { name = "+comment" },
 			["<leader>c"] = { name = "+code" },
 			["<leader>d"] = { name = "+debug" },
-			["<leader>ds"] = { name = "+step" },
-			["<leader>du"] = { name = "+ui" },
 			["<leader>f"] = { name = "+find" },
 			["<leader>g"] = { name = "+git" },
 			["<leader>r"] = { name = "+rust" },
