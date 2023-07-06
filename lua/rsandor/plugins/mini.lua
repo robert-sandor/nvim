@@ -13,7 +13,6 @@ return {
 	},
 	{ "echasnovski/mini.bufremove", opts = {}, keys = require("rsandor.keymap").mini_bufremove },
 	{ "echasnovski/mini.comment", opts = {}, keys = require("rsandor.keymap").mini_comment },
-	{ "echasnovski/mini.indentscope", opts = {} },
 	{ "echasnovski/mini.move", opts = {}, keys = require("rsandor.keymap").mini_move },
 	{ "echasnovski/mini.pairs", opts = {} },
 	{ "echasnovski/mini.splitjoin", opts = {}, keys = require("rsandor.keymap").mini_splitjoin },
