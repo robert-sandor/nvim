@@ -19,6 +19,7 @@ return {
 					native_lsp = {
 						enabled = true,
 					},
+					neotree = true,
 					noice = true,
 					notify = true,
 					telescope = true,

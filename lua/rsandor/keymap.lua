@@ -13,6 +13,8 @@ local keymaps = {
 		{ "<Tab>",      "<cmd>bnext<CR>",          desc = "next buffer" },
 		{ "<S-Tab>",    "<cmd>bprev<CR>",          desc = "previous buffer" },
 		{ "<leader>bn", "<cmd>enew<CR>",           desc = "new buffer" },
+		{ "<leader>bw", "<cmd>w<CR>",              desc = "write buffer" },
+		{ "<leader>bW", "<cmd>wa<CR>",             desc = "write all buffers" },
 		{ "Q",          "<nop>" },
 	},
 	telescope = {
@@ -21,15 +23,14 @@ local keymaps = {
 		{ "<leader>fw", "<cmd>Telescope live_grep<CR>",                             desc = "find text" },
 		{ "<leader>fo", "<cmd>Telescope buffers<CR>",                               desc = "find buffers" },
 		{ "<leader>fm", "<cmd>Telescope notify<CR>",                                desc = "find notifications" },
-		{
-			"<leader>fb",
-			"<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
-			desc = "file browser",
-		},
-		{ "<leader>gf", "<cmd>Telescope git_files<CR>",    desc = "git files" },
-		{ "<leader>gs", "<cmd>Telescope git_status<CR>",   desc = "git status" },
-		{ "<leader>gb", "<cmd>Telescope git_branches<CR>", desc = "git branches" },
-		{ "<leader>gc", "<cmd>Telescope git_commits<CR>",  desc = "git commits" },
+		{ "<leader>fr", "<cmd>Telescope resume<CR>",                                desc = "resume last search" },
+		{ "<leader>gf", "<cmd>Telescope git_files<CR>",                             desc = "git files" },
+		{ "<leader>gs", "<cmd>Telescope git_status<CR>",                            desc = "git status" },
+		{ "<leader>gb", "<cmd>Telescope git_branches<CR>",                          desc = "git branches" },
+		{ "<leader>gc", "<cmd>Telescope git_commits<CR>",                           desc = "git commits" },
+	},
+	neotree = {
+		{ "<leader>fb", "<cmd>Neotree filesystem float reveal<CR>", desc = "browse files" },
 	},
 	dap = {
 		{ "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "toggle breakpoint" },
