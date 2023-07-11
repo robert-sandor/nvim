@@ -17,34 +17,30 @@ return {
 		},
 		opts = {
 			servers = {
+				ansiblels = {},
+				bashls = {},
+				cssls = {},
+				docker_compose_language_service = {},
+				dockerls = {},
+				eslint = {},
+				gopls = {},
+				html = {},
 				lua_ls = {
 					Lua = {
 						diagnostics = { globals = { "vim" } },
 						runtime = { version = "LuaJIT" },
 						telemetry = { enable = false },
-						workspace = {
-							library = vim.api.nvim_get_runtime_file("", true),
-							checkThirdParty = false,
-						},
+						workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
 					},
 				},
-				gopls = {},
-				ansiblels = {},
-				bashls = {},
-				cssls = {},
-				dockerls = {},
-				docker_compose_language_service = {},
-				eslint = {},
-				html = {},
-				tsserver = {},
 				pyright = {},
 				svelte = {},
+				tsserver = {},
 				yamlls = {},
 			},
 		},
 		config = function(_, opts)
 			local mason_lspconfig = require("mason-lspconfig")
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 			mason_lspconfig.setup({
 				ensure_installed = vim.tbl_keys(opts.servers),
@@ -53,7 +49,6 @@ return {
 			mason_lspconfig.setup_handlers({
 				function(server_name)
 					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
 						settings = opts.servers[server_name],
 					})
 				end,
