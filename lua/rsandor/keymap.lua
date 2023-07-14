@@ -13,8 +13,8 @@ local keymaps = {
 		{ "<Tab>",      "<cmd>bnext<CR>",          desc = "next buffer" },
 		{ "<S-Tab>",    "<cmd>bprev<CR>",          desc = "previous buffer" },
 		{ "<leader>bn", "<cmd>enew<CR>",           desc = "new buffer" },
-		{ "<leader>bw", "<cmd>w<CR>",              desc = "write buffer" },
-		{ "<leader>bW", "<cmd>wa<CR>",             desc = "write all buffers" },
+		{ "<leader>w",  "<cmd>w<CR>",              desc = "write buffer" },
+		{ "<leader>W",  "<cmd>wa<CR>",             desc = "write all buffers" },
 		{ "Q",          "<nop>" },
 	},
 	telescope = {
