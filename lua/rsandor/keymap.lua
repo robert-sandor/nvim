@@ -15,6 +15,8 @@ local keymaps = {
 		{ "<leader>bn", "<cmd>enew<CR>",           desc = "new buffer" },
 		{ "<leader>w",  "<cmd>w<CR>",              desc = "write buffer" },
 		{ "<leader>W",  "<cmd>wa<CR>",             desc = "write all buffers" },
+		{ "<leader>q",  "<cmd>q<CR>",              desc = "quit" },
+		{ "<leader>Q",  "<cmd>qa<CR>",             desc = "quit all" },
 		{ "Q",          "<nop>" },
 	},
 	telescope = {
