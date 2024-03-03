@@ -54,6 +54,7 @@ return {
       { "<leader>fo", "<cmd>Telescope vim_options<cr>", desc = "[f]ind [o]ptions" },
       { "<leader>fr", "<cmd>Telescope registers<cr>", desc = "[f]ind [r]egisters" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "[f]ind [h]elp" },
+      { "<leader>gg", "<cmd>Telescope git_status<cr>", desc = "[g]it status" },
     },
   },
 }
