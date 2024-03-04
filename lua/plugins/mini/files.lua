@@ -12,9 +12,16 @@ return {
     {
       "<leader>e",
       function()
-        require("mini.files").open()
+        require("mini.files").open(vim.api.nvim_buf_get_name(0), false)
       end,
       desc = "file [e]xplorer",
+    },
+    {
+      "<leader>E",
+      function()
+        require("mini.files").open(nil, true)
+      end,
+      desc = "file [E]xplorer cwd",
     },
   },
 }

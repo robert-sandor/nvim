@@ -1,9 +1,5 @@
 local map = vim.keymap.set
 
--- swap : and ;
-map('n', ';', ':')
-map('n', ':', ';')
-
 -- clear search
 map({ "i", "n" }, "<esc>", "<cmd>nohl<cr><esc>", { desc = "clear search highlight" })
 
