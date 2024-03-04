@@ -20,6 +20,7 @@ return {
             },
           },
         },
+        yamlls = {},
       },
     },
     config = function(_, opts)
