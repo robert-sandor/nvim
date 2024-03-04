@@ -1,5 +1,6 @@
 require("settings")
 require("mappings")
+require("autocommands")
 
 -- bootstrap lazy.nvim for plugin management
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
