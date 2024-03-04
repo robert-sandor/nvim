@@ -1,4 +1,4 @@
 return {
-	"mfussenegger/nvim-ansible",
-	ft = { "yaml" },
+  "mfussenegger/nvim-ansible",
+  ft = { "yaml" },
 }
