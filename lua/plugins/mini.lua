@@ -1,1 +1,1 @@
-return { import = "plugins.mini" }
+return { import = 'plugins.mini' }
