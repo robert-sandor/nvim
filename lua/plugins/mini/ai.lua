@@ -2,5 +2,7 @@ return {
   'echasnovski/mini.ai',
   version = '*',
   event = 'VeryLazy',
-  opts = {},
+  opts = {
+    n_lines = 500,
+  },
 }

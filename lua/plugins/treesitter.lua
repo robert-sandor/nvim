@@ -45,12 +45,8 @@ return {
       'vimdoc',
       'yaml',
     },
-    highlight = {
-      enable = true,
-    },
-    indent = {
-      enable = true,
-    },
+    highlight = { enable = true },
+    indent = { enable = true },
     incremental_selection = {
       enable = true,
       keymaps = {
