@@ -15,6 +15,10 @@ vim.o.clipboard = 'unnamedplus'
 -- Enable all filetype plugins
 vim.cmd('filetype plugin indent on')
 
+-- Decrease update time
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
+
 -- UI settings
 vim.o.breakindent = true
 vim.o.confirm = true
@@ -49,6 +53,7 @@ vim.o.incsearch = true
 vim.o.infercase = true
 vim.o.smartcase = true
 vim.o.smartindent = true
+vim.o.inccommand = 'split'
 
 -- Completions
 vim.o.completeopt = 'menu,menuone,noinsert'
