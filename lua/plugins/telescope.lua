@@ -1,18 +1,19 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
+    branch = '0.1.x',
     dependencies = {
-      'plenary.nvim',
+      'nvim-lua/plenary.nvim',
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
-        config = function()
-          require('telescope').load_extension('fzf')
+        cond = function()
+          return vim.fn.executable('make') == 1
         end,
       },
+      'nvim-telescope/telescope-ui-select.nvim',
     },
-    opts = function()
+    config = function()
       local actions = require('telescope.actions')
       local telescopeConfig = require('telescope.config')
 
@@ -25,7 +26,7 @@ return {
       table.insert(vimgrep_arguments, '--glob')
       table.insert(vimgrep_arguments, '!**/.git/*')
 
-      return {
+      require('telescope').setup({
         defaults = {
           layout_strategy = 'vertical',
           mappings = {
@@ -40,7 +41,15 @@ return {
             find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*', '--no-ignore-vcs' },
           },
         },
-      }
+        extensions = {
+          ['ui-select'] = {
+            require('telescope.themes').get_dropdown(),
+          },
+        },
+      })
+
+      pcall(require('telescope').load_extension, 'fzf')
+      pcall(require('telescope').load_extension, 'ui-select')
     end,
     cmd = 'Telescope',
     keys = {
