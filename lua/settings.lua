@@ -10,6 +10,7 @@ vim.o.undolevels = 10000
 vim.o.backup = false
 vim.o.writebackup = false
 vim.o.mouse = 'a'
+vim.o.clipboard = 'unnamedplus'
 
 -- Enable all filetype plugins
 vim.cmd('filetype plugin indent on')
