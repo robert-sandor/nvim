@@ -22,9 +22,11 @@ return {
       -- from: https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#file-and-text-search-in-hidden-files-and-directories
       -- Clone the default Telescope configuration
       local vimgrep_arguments = { unpack(require('telescope.config').values.vimgrep_arguments) }
-      -- I want to search in hidden/dot files.
+      -- search hidden files
       table.insert(vimgrep_arguments, '--hidden')
-      -- I don't want to search in the `.git` directory.
+      -- search .gitignored files
+      table.insert(vimgrep_arguments, '--no-ignore-vcs')
+      -- exclude .git files
       table.insert(vimgrep_arguments, '--glob')
       table.insert(vimgrep_arguments, '!**/.git/*')
 
