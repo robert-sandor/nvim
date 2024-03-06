@@ -3,90 +3,67 @@ return {
     'neovim/nvim-lspconfig',
     lazy = false,
     dependencies = {
-      { 'folke/neodev.nvim', opts = {} },
-      'mason.nvim',
+      'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'hrsh7th/cmp-nvim-lsp',
+      'nvim-telescope/telescope.nvim',
     },
-    opts = {
-      servers = {
-        ansiblels = {},
-        bashls = {},
+    config = function()
+      -- add configuration for servers - NOTE: these will no be installed automatically
+      local server_configs = {
         lua_ls = {
           settings = {
             Lua = {
+              runtime = { version = 'LuaJIT' },
               workspace = {
                 checkThirdParty = false,
+                library = {
+                  '${3rd}/luv/library',
+                  unpack(vim.api.nvim_get_runtime_file('', true)),
+                },
+              },
+              completion = {
+                callSnippet = 'Replace',
               },
             },
           },
         },
-        yamlls = {},
-      },
-    },
-    config = function(_, opts)
-      local servers = opts.servers
-      local lsp_setup = function(server)
-        require('lspconfig')[server].setup(servers[server] or {})
-      end
+      }
 
-      local ensure_installed = {}
-      for server, _ in pairs(servers) do
-        table.insert(ensure_installed, server)
-      end
-      require('mason-lspconfig').setup({ ensure_installed = ensure_installed, handlers = { lsp_setup } })
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-      local telescope_available, telescope_builtin = pcall(require, 'telescope.builtin')
+      require('mason-lspconfig').setup({
+        handlers = {
+          function(server_name)
+            local server_config = server_configs[server_name] or {}
+            server_config.capabilities = vim.tbl_deep_extend('force', capabilities, server_config.capabilities or {})
+            require('lspconfig')[server_name].setup(server_config)
+          end,
+        },
+      })
 
       vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+        group = vim.api.nvim_create_augroup('UserLspConfig', { clear = true }),
         callback = function(ev)
-          -- Enable completion triggered by <c-x><c-o>
-          vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
-          local function map(mode, lhs, rhs, options)
-            vim.tbl_extend('force', options, { buffer = ev.buf })
-            vim.keymap.set(mode, lhs, rhs, options)
+          local function nmap(lhs, rhs, desc)
+            vim.keymap.set('n', lhs, rhs, { buffer = ev.buf, desc = desc })
           end
 
-          -- Buffer local mappings.
-          -- See `:help vim.lsp.*` for documentation on any of the below functions
-          map('n', 'K', vim.lsp.buf.hover, { desc = 'lsp hover' })
-          map('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[c]ode [r]ename' })
-          map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = '[c]ode [a]ction' })
-          map('n', 'gD', vim.lsp.buf.declaration, { desc = '[g]oto [D]eclaration' })
+          local builtin = require('telescope.builtin')
 
-          map('n', 'gd', function()
-            if telescope_available then
-              telescope_builtin.lsp_definitions()
-            else
-              vim.lsp.buf.definition()
-            end
-          end, { desc = '[g]oto [d]efinition' })
+          nmap('K', vim.lsp.buf.hover, 'hover documentation')
 
-          map('n', 'gi', function()
-            if telescope_available then
-              telescope_builtin.lsp_implementations()
-            else
-              vim.lsp.buf.implementation()
-            end
-          end, { desc = '[g]oto [i]mplementation' })
+          nmap('gd', builtin.lsp_definitions, '[g]oto [d]efinition')
+          nmap('gi', builtin.lsp_implementations, '[g]oto [i]mplementation')
+          nmap('gr', builtin.lsp_references, '[g]oto [r]eferences')
+          nmap('gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration')
 
-          map('n', 'gr', function()
-            if telescope_available then
-              telescope_builtin.lsp_references()
-            else
-              vim.lsp.buf.references()
-            end
-          end, { desc = '[g]oto [r]eferences' })
-
-          -- map('n', '<leader>cs', vim.lsp.buf.signature_help, { desc = '[c]ode [s]ignature' })
-          map('n', '<leader>ct', function()
-            if telescope_available then
-              telescope_builtin.lsp_type_definitions()
-            else
-              vim.lsp.buf.type_definition()
-            end
-          end, { desc = '[c]ode [t]ype definition' })
+          nmap('<leader>cr', vim.lsp.buf.rename, '[c]ode [r]ename')
+          nmap('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
+          nmap('<leader>ct', builtin.lsp_type_definitions, '[c]ode [t]ype definition')
+          nmap('<leader>cd', builtin.lsp_document_symbols, '[c]ode [d]ocument symbols')
+          nmap('<leader>cw', builtin.lsp_dynamic_workspace_symbols, '[c]ode [w]orkspace symbols')
         end,
       })
     end,

@@ -2,6 +2,7 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
+    event = 'VeryLazy',
     dependencies = {
       'nvim-lua/plenary.nvim',
       {
@@ -14,24 +15,25 @@ return {
       'nvim-telescope/telescope-ui-select.nvim',
     },
     config = function()
-      local actions = require('telescope.actions')
-      local telescopeConfig = require('telescope.config')
+      local telescope = require('telescope')
+      local builtin = require('telescope.builtin')
+      local themes = require('telescope.themes')
 
       -- from: https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#file-and-text-search-in-hidden-files-and-directories
       -- Clone the default Telescope configuration
-      local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+      local vimgrep_arguments = { unpack(require('telescope.config').values.vimgrep_arguments) }
       -- I want to search in hidden/dot files.
       table.insert(vimgrep_arguments, '--hidden')
       -- I don't want to search in the `.git` directory.
       table.insert(vimgrep_arguments, '--glob')
       table.insert(vimgrep_arguments, '!**/.git/*')
 
-      require('telescope').setup({
+      telescope.setup({
         defaults = {
           layout_strategy = 'vertical',
           mappings = {
             i = {
-              ['<esc>'] = actions.close,
+              ['<esc>'] = require('telescope.actions').close,
             },
           },
           vimgrep_arguments = vimgrep_arguments,
@@ -43,28 +45,29 @@ return {
         },
         extensions = {
           ['ui-select'] = {
-            require('telescope.themes').get_dropdown(),
+            themes.get_dropdown(),
           },
         },
       })
 
-      pcall(require('telescope').load_extension, 'fzf')
-      pcall(require('telescope').load_extension, 'ui-select')
+      pcall(telescope.load_extension, 'fzf')
+      pcall(telescope.load_extension, 'ui-select')
+
+      local function nmap(lhs, rhs, desc)
+        vim.keymap.set('n', lhs, rhs, { desc = desc })
+      end
+
+      nmap('<leader><leader>', builtin.buffers, 'find opened buffers')
+      nmap('<leader>ff', builtin.find_files, '[f]ind [f]iles')
+      nmap('<leader>fg', builtin.live_grep, '[f]ind by [g]rep')
+      nmap('<leader>fw', builtin.grep_string, '[f]ind current [w]ord')
+      nmap('<leader>fh', builtin.help_tags, '[f]ind [h]elp')
+      nmap('<leader>fr', builtin.resume, '[f]ind [r]esume')
+      nmap('<leader>fd', builtin.diagnostics, '[f]ind [d]iagnostics')
+      nmap('<leader>fo', builtin.oldfiles, '[f]ind [o]ldfiles')
+      nmap('<leader>/', function()
+        builtin.current_buffer_fuzzy_find(themes.get_dropdown({ previewer = false }))
+      end, '[/] fuzzy search in buffer')
     end,
-    cmd = 'Telescope',
-    keys = {
-      { '<leader><leader>', '<cmd>Telescope find_files<cr>', desc = 'find files' },
-      { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = '[f]ind [f]iles' },
-      { '<leader>fg', '<cmd>Telescope git_files<cr>', desc = '[f]ind [g]it files' },
-      { '<leader>fw', '<cmd>Telescope grep_string<cr>', desc = '[f]ind [w]ord' },
-      { '<leader>fl', '<cmd>Telescope live_grep<cr>', desc = '[f]ind [l]ive grep' },
-      { '<leader>fc', '<cmd>Telescope commands<cr>', desc = '[f]ind [c]ommands' },
-      { '<leader>fm', '<cmd>Telescope man_pages<cr>', desc = '[f]ind [m]an page' },
-      { '<leader>fo', '<cmd>Telescope vim_options<cr>', desc = '[f]ind [o]ptions' },
-      { '<leader>fr', '<cmd>Telescope registers<cr>', desc = '[f]ind [r]egisters' },
-      { '<leader>fh', '<cmd>Telescope help_tags<cr>', desc = '[f]ind [h]elp' },
-      { '<leader>fr', '<cmd>Telescope resume<cr>', desc = '[f]ind [r]esume' },
-      { '<leader>gg', '<cmd>Telescope git_status<cr>', desc = '[g]it status' },
-    },
   },
 }
