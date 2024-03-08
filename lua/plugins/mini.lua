@@ -11,14 +11,10 @@ return {
       -- add more textobjects
       require('mini.ai').setup({ n_lines = 500 })
 
-      -- move around with [ and ]
-      -- TODO: check if this is really needed, or we can replace with keymaps
-      require('mini.bracketed').setup()
-
       -- delete buffers with <leader>bd
       local bufremove = require('mini.bufremove')
       bufremove.setup()
-      nmap('<leader>bd', bufremove.delete, { desc = '[b]uffer [d]elete' })
+      nmap('<leader>bd', bufremove.delete, '[b]uffer [d]elete')
 
       -- comments with gc
       require('mini.comment').setup()

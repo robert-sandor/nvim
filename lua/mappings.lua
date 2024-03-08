@@ -23,3 +23,7 @@ map('v', '>', '>gv')
 
 -- buffer
 map('n', '<leader>bn', '<cmd>enew<cr>', { desc = '[b]uffer [n]ew' })
+
+-- diagnostics
+map('n', '[d', vim.diagnostic.goto_prev, { desc = 'go to previous [d]iagnostic message' })
+map('n', ']d', vim.diagnostic.goto_next, { desc = 'go to next [d]iagnostic message' })
