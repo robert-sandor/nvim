@@ -74,11 +74,7 @@ return {
       require('mini.splitjoin').setup()
 
       -- statusline
-      local statusline = require('mini.statusline')
-      statusline.setup()
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
+      require('mini.statusline').setup()
 
       -- surround
       require('mini.surround').setup({
