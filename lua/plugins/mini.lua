@@ -55,8 +55,16 @@ return {
       -- show current indent
       local indentscope = require('mini.indentscope')
       indentscope.setup({
-        draw = { delay = 100, animation = indentscope.gen_animation.none() },
-        options = { border = 'top' },
+        symbol = '▏',
+        draw = {
+          delay = 100,
+          animation = function()
+            return 5
+          end,
+        },
+        options = {
+          try_as_border = true,
+        },
       })
 
       -- move text around with Alt-hjkl
