@@ -17,6 +17,8 @@ return {
         ['<leader>b'] = { name = '[b]uffer' },
         ['<leader>c'] = { name = '[c]ode' },
         ['<leader>f'] = { name = '[f]ind' },
+        ['<leader>h'] = { name = '[h]unk (git)' },
+        ['<leader>t'] = { name = '[t]oggles' },
       })
     end,
   },

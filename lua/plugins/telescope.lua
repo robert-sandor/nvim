@@ -67,9 +67,7 @@ return {
       nmap('<leader>fr', builtin.resume, '[f]ind [r]esume')
       nmap('<leader>fd', builtin.diagnostics, '[f]ind [d]iagnostics')
       nmap('<leader>fo', builtin.oldfiles, '[f]ind [o]ldfiles')
-      nmap('<leader>/', function()
-        builtin.current_buffer_fuzzy_find(themes.get_dropdown({ previewer = false }))
-      end, '[/] fuzzy search in buffer')
+      nmap('<leader>/', builtin.current_buffer_fuzzy_find, '[/] fuzzy search in buffer')
     end,
   },
 }
