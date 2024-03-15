@@ -32,7 +32,7 @@ return {
 
       telescope.setup({
         defaults = {
-          layout_strategy = 'vertical',
+          layout_strategy = 'center',
           mappings = {
             i = {
               ['<esc>'] = require('telescope.actions').close,
