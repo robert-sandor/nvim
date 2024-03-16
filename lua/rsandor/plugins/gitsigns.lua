@@ -3,7 +3,7 @@ return {
     'lewis6991/gitsigns.nvim',
     event = 'VeryLazy',
     config = function()
-      local u = require('utils')
+      local u = require('rsandor.utils')
       local gitsigns = require('gitsigns')
 
       u.nmap('<leader>tb', gitsigns.toggle_current_line_blame, '[t]oggle current line [b]lame')

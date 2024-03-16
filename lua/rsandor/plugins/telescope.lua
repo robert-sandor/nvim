@@ -55,9 +55,7 @@ return {
       pcall(telescope.load_extension, 'fzf')
       pcall(telescope.load_extension, 'ui-select')
 
-      local function nmap(lhs, rhs, desc)
-        vim.keymap.set('n', lhs, rhs, { desc = desc })
-      end
+      local nmap = require('rsandor.utils').nmap
 
       nmap('<leader><leader>', builtin.buffers, 'find opened buffers')
       nmap('<leader>ff', builtin.find_files, '[f]ind [f]iles')

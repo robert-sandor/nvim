@@ -4,9 +4,7 @@ return {
     version = '*',
     lazy = false,
     config = function()
-      local function nmap(lhs, rhs, desc)
-        vim.keymap.set('n', lhs, rhs, { desc = desc })
-      end
+      local nmap = require('rsandor.utils').nmap
 
       -- add more textobjects
       require('mini.ai').setup({ n_lines = 500 })

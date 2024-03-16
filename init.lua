@@ -1,6 +1,6 @@
-require('settings')
-require('mappings')
-require('autocommands')
+require('rsandor.settings')
+require('rsandor.mappings')
+require('rsandor.autocommands')
 
 -- bootstrap lazy.nvim for plugin management
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -11,7 +11,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- initialize lazy.nvim
-require('lazy').setup('plugins', {
+require('lazy').setup('rsandor.plugins', {
   install = { colorscheme = { 'catppuccin-macchiato', 'habamax' } },
   change_detection = { notify = false },
 })

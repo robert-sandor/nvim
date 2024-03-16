@@ -46,24 +46,22 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', { clear = true }),
         callback = function(ev)
-          local function nmap(lhs, rhs, desc)
-            vim.keymap.set('n', lhs, rhs, { buffer = ev.buf, desc = desc })
-          end
-
+          local opts = { buffer = ev.buf }
+          local nmap = require('rsandor.utils').nmap
           local builtin = require('telescope.builtin')
 
-          nmap('K', vim.lsp.buf.hover, 'hover documentation')
+          nmap('K', vim.lsp.buf.hover, 'hover documentation', opts)
 
-          nmap('gd', builtin.lsp_definitions, '[g]oto [d]efinition')
-          nmap('gi', builtin.lsp_implementations, '[g]oto [i]mplementation')
-          nmap('gr', builtin.lsp_references, '[g]oto [r]eferences')
-          nmap('gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration')
+          nmap('gd', builtin.lsp_definitions, '[g]oto [d]efinition', opts)
+          nmap('gi', builtin.lsp_implementations, '[g]oto [i]mplementation', opts)
+          nmap('gr', builtin.lsp_references, '[g]oto [r]eferences', opts)
+          nmap('gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration', opts)
 
-          nmap('<leader>cr', vim.lsp.buf.rename, '[c]ode [r]ename')
-          nmap('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
-          nmap('<leader>ct', builtin.lsp_type_definitions, '[c]ode [t]ype definition')
-          nmap('<leader>cd', builtin.lsp_document_symbols, '[c]ode [d]ocument symbols')
-          nmap('<leader>cw', builtin.lsp_dynamic_workspace_symbols, '[c]ode [w]orkspace symbols')
+          nmap('<leader>cr', vim.lsp.buf.rename, '[c]ode [r]ename', opts)
+          nmap('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction', opts)
+          nmap('<leader>ct', builtin.lsp_type_definitions, '[c]ode [t]ype definition', opts)
+          nmap('<leader>cd', builtin.lsp_document_symbols, '[c]ode [d]ocument symbols', opts)
+          nmap('<leader>cw', builtin.lsp_dynamic_workspace_symbols, '[c]ode [w]orkspace symbols', opts)
         end,
       })
     end,
