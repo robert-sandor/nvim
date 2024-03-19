@@ -11,6 +11,7 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       yaml = { { 'prettierd', 'prettier' } },
+      json = { { 'prettierd', 'prettier' } },
     },
   },
 }
