@@ -9,7 +9,7 @@ return {
       'nvim-telescope/telescope.nvim',
     },
     config = function()
-      -- add configuration for servers - NOTE: these will no be installed automatically
+      -- add configuration for servers - NOTE: these will not be installed automatically
       local server_configs = {
         lua_ls = {
           settings = {
@@ -52,16 +52,16 @@ return {
 
           nmap('K', vim.lsp.buf.hover, 'hover documentation', opts)
 
-          nmap('gd', builtin.lsp_definitions, '[g]oto [d]efinition', opts)
-          nmap('gi', builtin.lsp_implementations, '[g]oto [i]mplementation', opts)
-          nmap('gr', builtin.lsp_references, '[g]oto [r]eferences', opts)
-          nmap('gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration', opts)
+          nmap('gd', builtin.lsp_definitions, 'goto definition', opts)
+          nmap('gi', builtin.lsp_implementations, 'goto implementation', opts)
+          nmap('gr', builtin.lsp_references, 'goto references', opts)
+          nmap('gD', vim.lsp.buf.declaration, 'goto Declaration', opts)
 
-          nmap('<leader>cr', vim.lsp.buf.rename, '[c]ode [r]ename', opts)
-          nmap('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction', opts)
-          nmap('<leader>ct', builtin.lsp_type_definitions, '[c]ode [t]ype definition', opts)
-          nmap('<leader>cd', builtin.lsp_document_symbols, '[c]ode [d]ocument symbols', opts)
-          nmap('<leader>cw', builtin.lsp_dynamic_workspace_symbols, '[c]ode [w]orkspace symbols', opts)
+          nmap('<leader>cr', vim.lsp.buf.rename, 'code rename', opts)
+          nmap('<leader>ca', vim.lsp.buf.code_action, 'code action', opts)
+          nmap('<leader>ct', builtin.lsp_type_definitions, 'code type definition', opts)
+          nmap('<leader>cd', builtin.lsp_document_symbols, 'code document symbols', opts)
+          nmap('<leader>cw', builtin.lsp_dynamic_workspace_symbols, 'code workspace symbols', opts)
         end,
       })
     end,

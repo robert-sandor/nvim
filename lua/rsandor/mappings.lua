@@ -4,7 +4,7 @@ local u = require('rsandor.utils')
 u.map({ 'i', 'n' }, '<esc>', '<cmd>nohl<cr><esc>', 'clear search highlight', {})
 
 -- better paste
-u.map({ 'n', 'x' }, '<leader>p', '"0p', '[p]aste last yanked', {})
+u.map({ 'n', 'x' }, '<leader>p', '"0p', 'paste last yanked', {})
 
 -- better up/down
 u.nxmap('j', "v:count == 0 ? 'gj' : 'j'", 'Down', { expr = true, silent = true })
@@ -23,8 +23,8 @@ u.vmap('<', '<gv')
 u.vmap('>', '>gv')
 
 -- buffer
-u.nmap('<leader>bn', '<cmd>enew<cr>', '[b]uffer [n]ew', {})
+u.nmap('<leader>bn', '<cmd>enew<cr>', 'buffer new', {})
 
 -- diagnostics
-u.nmap('[d', vim.diagnostic.goto_prev, 'go to previous [d]iagnostic message', {})
-u.nmap(']d', vim.diagnostic.goto_next, 'go to next [d]iagnostic message', {})
+u.nmap('[d', vim.diagnostic.goto_prev, 'go to previous diagnostic message', {})
+u.nmap(']d', vim.diagnostic.goto_next, 'go to next diagnostic message', {})

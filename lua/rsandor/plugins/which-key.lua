@@ -14,11 +14,13 @@ return {
       })
 
       wk.register({
-        ['<leader>b'] = { name = '[b]uffer' },
-        ['<leader>c'] = { name = '[c]ode' },
-        ['<leader>f'] = { name = '[f]ind' },
-        ['<leader>h'] = { name = '[h]unk (git)' },
-        ['<leader>t'] = { name = '[t]oggles' },
+        ['<leader>b'] = { name = 'buffer' },
+        ['<leader>c'] = { name = 'code' },
+        ['<leader>f'] = { name = 'find' },
+        ['<leader>g'] = { name = 'git' },
+        ['<leader>gh'] = { name = 'git hunk' },
+        ['<leader>t'] = { name = 'toggles' },
+        ['<leader>x'] = { name = 'trouble' },
       })
     end,
   },

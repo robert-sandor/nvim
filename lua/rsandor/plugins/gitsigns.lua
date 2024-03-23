@@ -6,24 +6,24 @@ return {
       local u = require('rsandor.utils')
       local gitsigns = require('gitsigns')
 
-      u.nmap('<leader>tb', gitsigns.toggle_current_line_blame, '[t]oggle current line [b]lame')
+      u.nmap('<leader>tb', gitsigns.toggle_current_line_blame, 'toggle current line blame')
 
-      u.nmap('[c', gitsigns.prev_hunk, 'previous [c]hange')
-      u.nmap(']c', gitsigns.next_hunk, 'next [c]hange')
+      u.nmap('[h', gitsigns.prev_hunk, 'previous hunk')
+      u.nmap(']h', gitsigns.next_hunk, 'next hunk')
 
-      u.nmap('<leader>hp', gitsigns.preview_hunk_inline, '[h]unk [p]review')
-      u.nmap('<leader>hs', gitsigns.stage_hunk, '[h]unk [s]tage')
-      u.nmap('<leader>hS', gitsigns.stage_buffer, '[h]unk [s]tage buffer')
-      u.nmap('<leader>hr', gitsigns.reset_hunk, '[h]unk [r]eset')
-      u.nmap('<leader>hr', gitsigns.reset_buffer, '[h]unk [r]eset buffer')
-      u.nmap('<leader>hu', gitsigns.undo_stage_hunk, '[h]unk stage [u]ndo')
+      u.nmap('<leader>ghp', gitsigns.preview_hunk_inline, 'hunk preview')
+      u.nmap('<leader>ghs', gitsigns.stage_hunk, 'hunk stage')
+      u.nmap('<leader>ghS', gitsigns.stage_buffer, 'hunk stage buffer')
+      u.nmap('<leader>ghr', gitsigns.reset_hunk, 'hunk reset')
+      u.nmap('<leader>ghr', gitsigns.reset_buffer, 'hunk reset buffer')
+      u.nmap('<leader>ghu', gitsigns.undo_stage_hunk, 'hunk stage undo')
 
-      u.vmap('<leader>hs', function()
+      u.vmap('<leader>ghs', function()
         gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-      end, '[h]unk [s]tage')
-      u.vmap('<leader>hr', function()
+      end, 'hunk stage')
+      u.vmap('<leader>ghr', function()
         gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-      end, '[h]unk [s]tage')
+      end, 'hunk stage')
 
       gitsigns.setup({
         signcolumn = true,

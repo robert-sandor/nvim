@@ -13,6 +13,7 @@ return {
         end,
       },
       'nvim-telescope/telescope-ui-select.nvim',
+      'folke/trouble.nvim',
     },
     config = function()
       local telescope = require('telescope')
@@ -36,6 +37,7 @@ return {
           mappings = {
             i = {
               ['<esc>'] = require('telescope.actions').close,
+              ['<c-t>'] = require('trouble.providers.telescope').open_with_trouble,
             },
           },
           vimgrep_arguments = vimgrep_arguments,
@@ -58,14 +60,14 @@ return {
       local nmap = require('rsandor.utils').nmap
 
       nmap('<leader><leader>', builtin.buffers, 'find opened buffers')
-      nmap('<leader>ff', builtin.find_files, '[f]ind [f]iles')
-      nmap('<leader>fg', builtin.live_grep, '[f]ind by [g]rep')
-      nmap('<leader>fw', builtin.grep_string, '[f]ind current [w]ord')
-      nmap('<leader>fh', builtin.help_tags, '[f]ind [h]elp')
-      nmap('<leader>fr', builtin.resume, '[f]ind [r]esume')
-      nmap('<leader>fd', builtin.diagnostics, '[f]ind [d]iagnostics')
-      nmap('<leader>fo', builtin.oldfiles, '[f]ind [o]ldfiles')
-      nmap('<leader>/', builtin.current_buffer_fuzzy_find, '[/] fuzzy search in buffer')
+      nmap('<leader>ff', builtin.find_files, 'find files')
+      nmap('<leader>fg', builtin.live_grep, 'find by grep')
+      nmap('<leader>fw', builtin.grep_string, 'find current word')
+      nmap('<leader>fh', builtin.help_tags, 'find help')
+      nmap('<leader>fr', builtin.resume, 'find resume')
+      nmap('<leader>fd', builtin.diagnostics, 'find diagnostics')
+      nmap('<leader>fo', builtin.oldfiles, 'find oldfiles')
+      nmap('<leader>/', builtin.current_buffer_fuzzy_find, '/ fuzzy search in buffer')
     end,
   },
 }

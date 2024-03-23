@@ -9,8 +9,8 @@ return {
     },
     config = true,
     keys = {
-      { '<leader>gs', '<cmd>Neogit<cr>', desc = '[g]it [s]tatus' },
-      { '<leader>gc', '<cmd>Neogit commit<cr>', desc = '[g]it [c]ommit' },
+      { '<leader>gs', '<cmd>Neogit<cr>', desc = 'git status' },
+      { '<leader>gc', '<cmd>Neogit commit<cr>', desc = 'git commit' },
     },
   },
 }

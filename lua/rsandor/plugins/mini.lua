@@ -12,7 +12,7 @@ return {
       -- delete buffers with <leader>bd
       local bufremove = require('mini.bufremove')
       bufremove.setup()
-      nmap('<leader>bd', bufremove.delete, '[b]uffer [d]elete')
+      nmap('<leader>bd', bufremove.delete, 'buffer delete')
 
       -- comments with gc
       require('mini.comment').setup()
@@ -44,11 +44,11 @@ return {
 
       nmap('<leader>e', function()
         toggle_files(vim.api.nvim_buf_get_name(0), false)
-      end, '[e]xplore files')
+      end, 'explore files')
 
       nmap('<leader>E', function()
         toggle_files(nil, true)
-      end, '[e]xplore files cwd')
+      end, 'explore files cwd')
 
       -- show current indent
       local indentscope = require('mini.indentscope')
