@@ -12,6 +12,10 @@ return {
       lua = { 'stylua' },
       yaml = { { 'prettierd', 'prettier' } },
       json = { { 'prettierd', 'prettier' } },
+      sh = { 'shfmt' },
+      go = { 'goimports-reviser', 'gofumpt' },
+      python = { 'ruff' },
+      rust = { 'rustfmt' },
     },
   },
 }
