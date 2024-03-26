@@ -59,8 +59,9 @@ return {
 
       local nmap = require('rsandor.utils').nmap
 
-      nmap('<leader><leader>', builtin.buffers, 'find opened buffers')
+      nmap('<leader><leader>', builtin.find_files, 'find files')
       nmap('<leader>ff', builtin.find_files, 'find files')
+      nmap('<leader>fb', builtin.buffers, 'find open buffers')
       nmap('<leader>fg', builtin.live_grep, 'find by grep')
       nmap('<leader>fw', builtin.grep_string, 'find current word')
       nmap('<leader>fh', builtin.help_tags, 'find help')
