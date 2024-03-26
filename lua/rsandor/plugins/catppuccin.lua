@@ -16,6 +16,7 @@ return {
           neogit = true,
           telescope = { enabled = true, style = 'nvchad' },
           treesitter = true,
+          treesitter_context = true,
           which_key = true,
         },
       })
