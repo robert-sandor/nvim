@@ -7,6 +7,7 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'hrsh7th/cmp-nvim-lsp',
       'nvim-telescope/telescope.nvim',
+      { 'folke/neodev.nvim', opts = {} },
     },
     config = function()
       -- add configuration for servers - NOTE: these will not be installed automatically
@@ -14,16 +15,14 @@ return {
         lua_ls = {
           settings = {
             Lua = {
-              runtime = { version = 'LuaJIT' },
               workspace = {
                 checkThirdParty = false,
-                library = {
-                  '${3rd}/luv/library',
-                  unpack(vim.api.nvim_get_runtime_file('', true)),
-                },
               },
               completion = {
                 callSnippet = 'Replace',
+              },
+              codeLens = {
+                enable = true,
               },
             },
           },
