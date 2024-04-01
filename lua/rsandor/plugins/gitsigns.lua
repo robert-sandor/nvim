@@ -15,7 +15,7 @@ return {
       u.nmap('<leader>ghs', gitsigns.stage_hunk, 'hunk stage')
       u.nmap('<leader>ghS', gitsigns.stage_buffer, 'hunk stage buffer')
       u.nmap('<leader>ghr', gitsigns.reset_hunk, 'hunk reset')
-      u.nmap('<leader>ghr', gitsigns.reset_buffer, 'hunk reset buffer')
+      u.nmap('<leader>ghR', gitsigns.reset_buffer, 'hunk reset buffer')
       u.nmap('<leader>ghu', gitsigns.undo_stage_hunk, 'hunk stage undo')
 
       u.vmap('<leader>ghs', function()
