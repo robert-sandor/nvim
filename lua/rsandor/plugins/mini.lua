@@ -20,36 +20,6 @@ return {
       -- highlight word under cursor
       require('mini.cursorword').setup()
 
-      -- file manager
-      local files = require('mini.files')
-      files.setup({
-        mappings = {
-          go_in = '',
-          go_in_plus = 'l',
-          go_out = '',
-          go_out_plus = 'h',
-        },
-        windows = {
-          preview = true,
-          width_focus = 30,
-          width_preview = 50,
-        },
-      })
-      local function toggle_files(path, use_latest, opts)
-        opts = opts or {}
-        if not files.close() then
-          files.open(path, use_latest, opts)
-        end
-      end
-
-      nmap('<leader>e', function()
-        toggle_files(vim.api.nvim_buf_get_name(0), false)
-      end, 'explore files')
-
-      nmap('<leader>E', function()
-        toggle_files(nil, true)
-      end, 'explore files cwd')
-
       -- show current indent
       local indentscope = require('mini.indentscope')
       indentscope.setup({
