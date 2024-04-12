@@ -28,3 +28,10 @@ u.nmap('<leader>bn', '<cmd>enew<cr>', 'buffer new', {})
 -- diagnostics
 u.nmap('[d', vim.diagnostic.goto_prev, 'go to previous diagnostic message', {})
 u.nmap(']d', vim.diagnostic.goto_next, 'go to next diagnostic message', {})
+
+-- center line when scrolling up/down
+u.nmap('<c-u>', '<c-u>zz', 'scroll half page up', {})
+u.nmap('<c-d>', '<c-d>zz', 'scroll half page down', {})
+
+-- quickly replace word under cursor
+u.nmap('<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], 'change word under cursor', {})
