@@ -13,9 +13,15 @@ return {
       yaml = { { 'prettierd', 'prettier' } },
       json = { { 'prettierd', 'prettier' } },
       sh = { 'shfmt' },
+      bash = { 'shfmt' },
       go = { 'goimports-reviser', 'gofumpt' },
       python = { 'ruff' },
       rust = { 'rustfmt' },
+    },
+    formatters = {
+      shfmt = {
+        prepend_args = { '-i', '2' },
+      },
     },
   },
 }
