@@ -35,3 +35,6 @@ u.nmap('<c-d>', '<c-d>zz', 'scroll half page down', {})
 
 -- quickly replace word under cursor
 u.nmap('<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], 'change word under cursor', {})
+
+--
+u.nmap('<leader>oc', '<cmd>!code %<cr><cr>', 'open in vscode', {})

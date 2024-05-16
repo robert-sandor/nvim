@@ -14,9 +14,6 @@ return {
       bufremove.setup()
       nmap('<leader>bd', bufremove.delete, 'buffer delete')
 
-      -- comments with gc
-      require('mini.comment').setup()
-
       -- highlight word under cursor
       require('mini.cursorword').setup()
 
