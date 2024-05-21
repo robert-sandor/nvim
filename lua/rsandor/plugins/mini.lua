@@ -1,7 +1,7 @@
 return {
   {
     'echasnovski/mini.nvim',
-    version = '*',
+    version = false,
     lazy = false,
     config = function()
       local nmap = require('rsandor.utils').nmap
