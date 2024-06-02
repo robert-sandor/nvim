@@ -7,27 +7,11 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'hrsh7th/cmp-nvim-lsp',
       'nvim-telescope/telescope.nvim',
-      { 'folke/neodev.nvim', opts = {} },
+      { 'folke/lazydev.nvim', ft = 'lua', opts = {} },
     },
     config = function()
       -- add configuration for servers - NOTE: these will not be installed automatically
-      local server_configs = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              workspace = {
-                checkThirdParty = false,
-              },
-              completion = {
-                callSnippet = 'Replace',
-              },
-              codeLens = {
-                enable = true,
-              },
-            },
-          },
-        },
-      }
+      local server_configs = {}
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())

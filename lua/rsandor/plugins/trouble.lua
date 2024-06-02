@@ -3,17 +3,20 @@ return {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     cmd = { 'Trouble', 'TroubleToggle' },
-    opts = { use_diagnostic_signs = true },
+    opts = {
+      auto_jump = true,
+      focus = true,
+    },
     keys = {
-      { '<leader>xx', '<cmd>TroubleToggle document_diagnostics<cr>', desc = 'document diagnostics' },
-      { '<leader>xX', '<cmd>TroubleToggle workspace_diagnostics<cr>', desc = 'workspace diagnostics' },
-      { '<leader>xL', '<cmd>TroubleToggle loclist<cr>', desc = 'location list' },
-      { '<leader>xQ', '<cmd>TroubleToggle quickfix<cr>', desc = 'quickfix' },
+      { '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', desc = 'diagnostics' },
+      { '<leader>xX', '<cmd>Trouble diagnostics toggle filter.bug=0<cr>', desc = 'buffer diagnostics' },
+      { '<leader>xL', '<cmd>Trouble loclist toggle<cr>', desc = 'location list' },
+      { '<leader>xQ', '<cmd>Trouble qflist toggle<cr>', desc = 'quickfix' },
       {
         '[q',
         function()
-          if require('trouble').is_open() then
-            require('trouble').previous({ skip_groups = true, jump = true })
+          if require('trouble').is_open('diagnostics') then
+            require('trouble').prev('diagnostics')
           else
             local ok, err = pcall(vim.cmd.cprev)
             if not ok then
@@ -26,8 +29,8 @@ return {
       {
         ']q',
         function()
-          if require('trouble').is_open() then
-            require('trouble').next({ skip_groups = true, jump = true })
+          if require('trouble').is_open('diagnostics') then
+            require('trouble').next('diagnostics')
           else
             local ok, err = pcall(vim.cmd.cnext)
             if not ok then
