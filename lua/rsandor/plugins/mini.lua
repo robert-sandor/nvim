@@ -17,6 +17,9 @@ return {
       -- highlight word under cursor
       require('mini.cursorword').setup()
 
+      require('mini.icons').setup()
+      require('mini.icons').mock_nvim_web_devicons()
+
       -- show current indent
       local indentscope = require('mini.indentscope')
       indentscope.setup({

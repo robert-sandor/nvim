@@ -1,7 +1,10 @@
 return {
   {
     'folke/trouble.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = {
+      -- 'nvim-tree/nvim-web-devicons',
+      'echasnovski/mini.nvim',
+    },
     cmd = { 'Trouble', 'TroubleToggle' },
     opts = {
       auto_jump = true,
@@ -16,7 +19,7 @@ return {
         '[q',
         function()
           if require('trouble').is_open('diagnostics') then
-            require('trouble').prev('diagnostics')
+            require('trouble').prev({ skip_groups = true, jump = true })
           else
             local ok, err = pcall(vim.cmd.cprev)
             if not ok then
@@ -30,7 +33,7 @@ return {
         ']q',
         function()
           if require('trouble').is_open('diagnostics') then
-            require('trouble').next('diagnostics')
+            require('trouble').next({ skip_groups = true, jump = true })
           else
             local ok, err = pcall(vim.cmd.cnext)
             if not ok then

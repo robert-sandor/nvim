@@ -1,26 +1,30 @@
 return {
   {
     'folke/which-key.nvim',
-    event = 'VimEnter',
+    event = 'VeryLazy',
     config = function()
       local wk = require('which-key')
 
       wk.setup({
-        spelling = { enabled = false },
-        window = {
-          border = 'single',
-          winblend = 10,
+        preset = 'modern',
+        plugins = {
+          marks = true,
+          registers = true,
+          spelling = {
+            enabled = true,
+            suggestions = 20,
+          },
         },
       })
 
-      wk.register({
-        ['<leader>b'] = { name = 'buffer' },
-        ['<leader>c'] = { name = 'code' },
-        ['<leader>f'] = { name = 'find' },
-        ['<leader>g'] = { name = 'git' },
-        ['<leader>gh'] = { name = 'git hunk' },
-        ['<leader>t'] = { name = 'toggles' },
-        ['<leader>x'] = { name = 'trouble' },
+      wk.add({
+        { '<leader>b', group = 'buffer' },
+        { '<leader>c', group = 'code' },
+        { '<leader>f', group = 'find' },
+        { '<leader>g', group = 'git' },
+        { '<leader>gh', group = 'git hunk' },
+        { '<leader>t', group = 'toggles' },
+        { '<leader>x', group = 'trouble' },
       })
     end,
   },
