@@ -9,6 +9,13 @@ return {
         end,
         desc = 'Find Help',
       },
+      {
+        '<leader>fk',
+        function()
+          require('telescope.builtin').keymaps()
+        end,
+        desc = 'Find keymaps',
+      },
     },
   },
 }
