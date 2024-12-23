@@ -1,15 +1,11 @@
 return {
   {
     'stevearc/oil.nvim',
-    enabled = false,
+    enabled = true,
     opts = {
       skip_confirm_for_simple_edits = true,
-      view_options = {
-        show_hidden = true,
-      },
-      float = {
-        padding = 4,
-      },
+      view_options = { show_hidden = true },
+      float = { padding = 4 },
     },
     dependencies = { { 'echasnovski/mini.icons', opts = {} } },
     keys = {
