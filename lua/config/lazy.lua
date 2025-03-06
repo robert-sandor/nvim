@@ -20,6 +20,7 @@ require('lazy').setup({
     { 'LazyVim/LazyVim', import = 'lazyvim.plugins' },
     -- extras
     { import = 'lazyvim.plugins.extras.coding.mini-surround' },
+    { import = 'lazyvim.plugins.extras.coding.yanky' },
     { import = 'lazyvim.plugins.extras.editor.dial' },
     { import = 'lazyvim.plugins.extras.editor.illuminate' },
     { import = 'lazyvim.plugins.extras.editor.inc-rename' },
