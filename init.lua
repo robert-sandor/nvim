@@ -291,7 +291,9 @@ end)
 
 now(function()
   add('mason-org/mason.nvim')
+  add('mason-org/mason-lspconfig.nvim')
   require('mason').setup()
+  require('mason-lspconfig').setup()
 end)
 
 now(require('lang.lua'))
