@@ -1,7 +1,7 @@
 return function()
   vim.filetype.add({
     pattern = {
-      -- Ansible
+      -- docker compose files
       ['docker-compose%.ya?ml'] = 'yaml.docker-compose',
       ['compose%.ya?ml'] = 'yaml.docker-compose',
     },
