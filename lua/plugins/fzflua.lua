@@ -1,0 +1,19 @@
+return function()
+  require('mini.deps').add('ibhagwan/fzf-lua')
+
+  local fzf = require('fzf-lua')
+
+  fzf.setup({ files = { no_ignore = true } })
+
+  fzf.register_ui_select()
+
+  local key = require('utils').key
+  key('n', '<leader><space>', fzf.files, 'Find files')
+  key('n', '<leader>,', fzf.buffers, 'Find buffers')
+  key('n', '<leader>/', fzf.grep, 'Grep')
+  key('n', '<leader>ff', fzf.files, 'Find files')
+  key('n', '<leader>fb', fzf.buffers, 'Find buffers')
+  key('n', '<leader>fs', fzf.treesitter, 'Find symbols')
+  key('n', '<leader>fr', fzf.resume, 'Resume last find')
+  key('n', '<leader>fh', fzf.helptags, 'Find help tags')
+end
