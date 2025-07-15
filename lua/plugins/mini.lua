@@ -3,7 +3,6 @@ return function()
   require('mini.icons').setup()
   require('mini.indentscope').setup({ symbol = '▏', options = { try_as_border = true } })
   require('mini.pairs').setup()
-  require('mini.starter').setup({ evaluate_single = true })
   require('mini.statusline').setup()
   require('mini.surround').setup()
 
