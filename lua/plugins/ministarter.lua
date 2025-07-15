@@ -6,6 +6,6 @@ return function()
       starter.sections.recent_files(10, true),
       starter.sections.builtin_actions(),
     },
-    -- footer = '',
+    footer = '',
   })
 end
