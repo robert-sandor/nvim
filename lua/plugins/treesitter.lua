@@ -11,7 +11,19 @@ return function()
   })
 
   require('nvim-treesitter.configs').setup({
-    ensure_installed = { 'lua', 'vimdoc', 'yaml', 'regex' },
+    ensure_installed = {
+      'bash',
+      'git_config',
+      'git_rebase',
+      'gitattributes',
+      'gitcommit',
+      'gitignore',
+      'lua',
+      'markdown',
+      'regex',
+      'vimdoc',
+      'yaml',
+    },
     highlight = { enable = true },
     indent = { enable = true },
   })
