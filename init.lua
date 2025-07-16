@@ -24,3 +24,4 @@ now(require('plugins.mason')) -- mason - install lsp, linters, formatters
 now(require('lang.lua'))
 now(require('lang.ansible'))
 now(require('lang.docker'))
+now(require('lang.markdown'))
