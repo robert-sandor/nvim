@@ -14,6 +14,7 @@ now(require('plugins.ministarter')) -- mini.starter - start page
 now(require('plugins.fzflua')) -- fzf-lua - picker for all kinds of things
 now(require('plugins.navigator')) -- navigator - navigate seamlessly between nvim and tmux
 now(require('plugins.gitsigns')) -- gitsigns - show git status and handle hunks
+now(require('plugins.todo-comments')) -- todo-comments - highlight todos, warns, fixme's, etc.
 now(require('plugins.treesitter')) -- treesitter - better syntax highlighting
 now(require('plugins.blink')) -- blink - code completion engine
 now(require('plugins.conform')) -- conform - formatters to use for each file
