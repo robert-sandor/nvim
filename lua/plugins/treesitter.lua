@@ -23,6 +23,7 @@ return function()
       'regex',
       'vimdoc',
       'yaml',
+      'json',
     },
     highlight = { enable = true },
     indent = { enable = true },
