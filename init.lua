@@ -8,6 +8,7 @@ local now = require('mini.deps').now
 
 now(require('plugins.catppuccin')) -- catppuccin - theme
 now(require('plugins.mini')) -- mini.nvim - bunch of plugins that have very little to no custom configuration
+now(require('plugins.minianimate')) -- mini.animate - add some animations
 now(require('plugins.miniclue')) -- mini.clue - show keymap clues
 now(require('plugins.minifiles')) -- mini.files - file manager
 now(require('plugins.ministarter')) -- mini.starter - start page
