@@ -3,7 +3,17 @@ return function()
 
   local fzf = require('fzf-lua')
 
-  fzf.setup({ files = { no_ignore = true } })
+  fzf.setup({
+    files = {
+      cwd_prompt = false,
+      hidden = true,
+      no_ignore = true,
+    },
+    grep = {
+      hidden = true,
+      no_ignore = true,
+    },
+  })
 
   fzf.register_ui_select()
 
