@@ -24,6 +24,6 @@ return function()
   key('n', '<leader>ff', fzf.files, 'Find files')
   key('n', '<leader>fb', fzf.buffers, 'Find buffers')
   key('n', '<leader>fs', fzf.treesitter, 'Find symbols')
-  key('n', '<leader>fr', fzf.resume, 'Resume last find')
+  key('n', '<leader>fR', fzf.resume, 'Resume last find')
   key('n', '<leader>fh', fzf.helptags, 'Find help tags')
 end

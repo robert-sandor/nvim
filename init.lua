@@ -13,7 +13,7 @@ now(require('plugins.minifiles')) -- mini.files - file manager
 now(require('plugins.ministarter')) -- mini.starter - start page
 now(require('plugins.fzflua')) -- fzf-lua - picker for all kinds of things
 now(require('plugins.navigator')) -- navigator - navigate seamlessly between nvim and tmux
-now(require('plugins.flash'))
+now(require('plugins.flash')) -- flash - jump around the buffer
 now(require('plugins.gitsigns')) -- gitsigns - show git status and handle hunks
 now(require('plugins.todo-comments')) -- todo-comments - highlight todos, warns, fixme's, etc.
 now(require('plugins.treesitter')) -- treesitter - better syntax highlighting
@@ -22,6 +22,7 @@ now(require('plugins.conform')) -- conform - formatters to use for each file
 now(require('plugins.lsp')) -- lsp config
 now(require('plugins.lint')) -- nvim-lint - linter for files with no lsp
 now(require('plugins.mason')) -- mason - install lsp, linters, formatters
+now(require('plugins.grugfar')) -- grug-far - find and replace
 
 now(require('lang.lua'))
 now(require('lang.ansible'))
