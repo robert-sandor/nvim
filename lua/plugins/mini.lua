@@ -5,7 +5,17 @@ return function()
   require('mini.move').setup()
   require('mini.pairs').setup()
   require('mini.statusline').setup()
-  require('mini.surround').setup()
+  require('mini.surround').setup({
+    mappings = {
+      add = 'gsa',
+      delete = 'gsd',
+      find = 'gsf',
+      find_left = 'gsF',
+      highlight = 'gsh',
+      replace = 'gsr',
+      update_n_lines = 'gsn',
+    },
+  })
 
   local notify = require('mini.notify')
   notify.setup()
