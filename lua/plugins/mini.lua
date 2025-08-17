@@ -1,5 +1,6 @@
 return function()
   require('mini.ai').setup({ n_lines = 100 })
+  require('mini.diff').setup()
   require('mini.icons').setup()
   require('mini.indentscope').setup({ symbol = '▏', options = { try_as_border = true } })
   require('mini.move').setup()
