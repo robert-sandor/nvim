@@ -14,7 +14,7 @@ return function()
       NOTE = { alt = { 'INFO', 'note', 'info' } },
     },
     highlight = {
-      before = 'fg',
+      before = '',
       keyword = 'fg',
       after = 'fg',
     },
