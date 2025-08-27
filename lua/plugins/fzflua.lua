@@ -20,7 +20,7 @@ return function()
   local key = require('utils').key
   key('n', '<leader><space>', fzf.files, 'Find files')
   key('n', '<leader>,', fzf.buffers, 'Find buffers')
-  key('n', '<leader>/', fzf.grep, 'Grep')
+  key('n', '<leader>/', fzf.live_grep, 'Grep')
   key('n', '<leader>ff', fzf.files, 'Find files')
   key('n', '<leader>fb', fzf.buffers, 'Find buffers')
   key('n', '<leader>fs', fzf.treesitter, 'Find symbols')
