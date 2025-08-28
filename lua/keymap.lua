@@ -3,7 +3,7 @@ local key, cmd = utils.key, utils.cmd
 
 key('n', '<esc>', cmd('nohl'), 'Clear search highlights')
 
-vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Paste without yanking' })
+vim.keymap.set('x', '<leader>p', '"_dp', { desc = 'Paste without yanking' })
 vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete without yanking' })
 
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and reselect' })
