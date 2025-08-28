@@ -3,7 +3,7 @@ return function()
     source = 'MeanderingProgrammer/render-markdown.nvim',
     depends = {
       'nvim-treesitter/nvim-treesitter',
-      'echasnovski/mini.nvim',
+      'nvim-mini/mini.nvim',
     },
   })
 

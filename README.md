@@ -25,7 +25,7 @@ nvim
 ## Included plugins
 
 You can see the full list in [init.lua](./init.lua). Notable mentions
-- [mini.nvim](https://github.com/echasnovski/mini.nvim?tab=readme-ov-file) - uses mini.deps as the package manager, as well as a bunch of other modules - this is the backbone of the configuration
+- [mini.nvim](https://github.com/nvim-mini/mini.nvim?tab=readme-ov-file) - uses mini.deps as the package manager, as well as a bunch of other modules - this is the backbone of the configuration
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua) - uses `fzf` for all neovim pickers
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - integration with treesitter for better syntax highlighting and textobjects
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim) - visualize git changes in-editor, and stage/unstage hunks
