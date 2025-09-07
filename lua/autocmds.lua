@@ -19,3 +19,11 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     end
   end,
 })
+
+-- Equalize split on window resize
+vim.api.nvim_create_autocmd('VimResized', {
+  group = augroup,
+  callback = function()
+    vim.cmd('wincmd =')
+  end,
+})
