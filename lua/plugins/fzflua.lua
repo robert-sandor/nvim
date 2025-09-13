@@ -6,12 +6,6 @@ return function()
   fzf.setup({
     files = {
       cwd_prompt = false,
-      hidden = true,
-      no_ignore = true,
-    },
-    grep = {
-      hidden = true,
-      no_ignore = true,
     },
   })
 
