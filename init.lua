@@ -10,11 +10,8 @@ now(require('plugins.catppuccin')) -- catppuccin - theme
 now(require('plugins.mini')) -- mini.nvim - bunch of plugins that have very little to no custom configuration
 now(require('plugins.miniclue')) -- mini.clue - show keymap clues
 now(require('plugins.minifiles')) -- mini.files - file manager
--- now(require('plugins.ministarter')) -- mini.starter - start page
 now(require('plugins.fzflua')) -- fzf-lua - picker for all kinds of things
 now(require('plugins.navigator')) -- navigator - navigate seamlessly between nvim and tmux
--- now(require('plugins.flash')) -- flash - jump around the buffer
--- now(require('plugins.gitsigns')) -- gitsigns - show git status and handle hunks
 now(require('plugins.todo-comments')) -- todo-comments - highlight todos, warns, fixme's, etc.
 now(require('plugins.treesitter')) -- treesitter - better syntax highlighting
 now(require('plugins.blink')) -- blink - code completion engine
