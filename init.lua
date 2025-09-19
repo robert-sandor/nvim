@@ -10,6 +10,7 @@ now(require('plugins.catppuccin')) -- catppuccin - theme
 now(require('plugins.mini')) -- mini.nvim - bunch of plugins that have very little to no custom configuration
 now(require('plugins.miniclue')) -- mini.clue - show keymap clues
 now(require('plugins.minifiles')) -- mini.files - file manager
+now(require('plugins.oil')) -- oil - file manager
 now(require('plugins.fzflua')) -- fzf-lua - picker for all kinds of things
 now(require('plugins.navigator')) -- navigator - navigate seamlessly between nvim and tmux
 now(require('plugins.todo-comments')) -- todo-comments - highlight todos, warns, fixme's, etc.
