@@ -6,6 +6,7 @@ return function()
     formatters_by_ft = {
       fish = { 'fish_indent' },
       sh = { 'shfmt' },
+      yaml = { 'prettierd' },
     },
     format_on_save = { timeout_ms = 500 },
   })
