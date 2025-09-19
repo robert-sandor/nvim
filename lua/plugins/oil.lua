@@ -12,6 +12,10 @@ return function()
   })
 
   vim.keymap.set('n', '-', function()
-    require('oil').toggle_float()
+    require('oil').open_float(nil, {
+      preview = {
+        vertical = true,
+      },
+    })
   end, { desc = 'Open parent directory' })
 end
