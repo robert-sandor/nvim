@@ -12,5 +12,5 @@ vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
 key('n', '<leader>q', vim.diagnostic.setqflist, 'Open diagnostic quickfix list')
 
 -- Simpler splits
-key('n', '<leader>-', cmd('split'), 'split window horizontally')
-key('n', '<leader>\\', cmd('vsplit'), 'split window vertically')
+key('n', '<leader>h', cmd('split'), 'split window horizontally')
+key('n', '<leader>v', cmd('vsplit'), 'split window vertically')
