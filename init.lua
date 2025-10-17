@@ -1,28 +1,30 @@
-require('options')
-require('keymap')
-require('autocmds')
+-- Clone 'mini.nvim' manually in a way that it gets managed by 'mini.deps'
+local mini_path = vim.fn.stdpath('data') .. '/site/pack/deps/start/mini.nvim'
+if not vim.loop.fs_stat(mini_path) then
+  vim.cmd('echo "Installing `mini.nvim`" | redraw')
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/nvim-mini/mini.nvim',
+    mini_path,
+  })
+  vim.cmd('packadd mini.nvim | helptags ALL')
+  vim.cmd('echo "Installed `mini.nvim`" | redraw')
+end
 
-require('plugins.minideps') -- plugin manager
+-- Set up 'mini.deps' (customize to your liking)
+local deps = require('mini.deps')
+deps.setup()
 
-local now = require('mini.deps').now
+-- Global configurations and helpers
+_G.Config = {}
 
-now(require('plugins.catppuccin')) -- catppuccin - theme
-now(require('plugins.mini')) -- mini.nvim - bunch of plugins that have very little to no custom configuration
-now(require('plugins.miniclue')) -- mini.clue - show keymap clues
--- now(require('plugins.minifiles')) -- mini.files - file manager
-now(require('plugins.oil')) -- oil - file manager
-now(require('plugins.fzflua')) -- fzf-lua - picker for all kinds of things
-now(require('plugins.navigator')) -- navigator - navigate seamlessly between nvim and tmux
-now(require('plugins.todo-comments')) -- todo-comments - highlight todos, warns, fixme's, etc.
-now(require('plugins.treesitter')) -- treesitter - better syntax highlighting
-now(require('plugins.blink')) -- blink - code completion engine
-now(require('plugins.conform')) -- conform - formatters to use for each file
-now(require('plugins.lsp')) -- lsp config
-now(require('plugins.lint')) -- nvim-lint - linter for files with no lsp
-now(require('plugins.mason')) -- mason - install lsp, linters, formatters
-now(require('plugins.grugfar')) -- grug-far - find and replace
+local augroup = vim.api.nvim_create_augroup('custom-config', {})
+_G.Config.new_autocmd = function(event, pattern, callback, desc)
+  vim.api.nvim_create_autocmd(event, { group = augroup, pattern = pattern, callback = callback, desc = desc })
+end
 
-now(require('lang.lua'))
-now(require('lang.ansible'))
-now(require('lang.docker'))
-now(require('lang.markdown'))
+-- Some plugins only and 'mini.nvim' modules need setup during startup if Neovim
+-- is started like `nvim -- path/to/file`, otherwise delaying startup is fine
+_G.Config.now_if_args = vim.fn.argc(-1) > 0 and deps.now or deps.later
