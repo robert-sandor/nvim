@@ -58,7 +58,7 @@ now_if_args(function()
 end)
 
 -- lsp
-now_if_args(function()
+now(function()
   add('neovim/nvim-lspconfig')
   add('mason-org/mason.nvim')
   add('mason-org/mason-lspconfig.nvim')
