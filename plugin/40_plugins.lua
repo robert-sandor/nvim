@@ -91,6 +91,7 @@ later(function()
       lua = { 'stylua' },
       sh = { 'shfmt' },
       yaml = { 'prettierd' },
+      json = { 'prettierd' },
       python = { 'ruff_format', 'ruff_organize_imports' },
     },
   })
