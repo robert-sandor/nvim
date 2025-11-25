@@ -76,6 +76,7 @@ now(function()
       'shfmt', -- Bash formatter
       'pyright', -- Python LSP
       'ruff', -- Python linter and formatter
+      'yamlls', -- YAML language server
       'prettierd', -- json, yaml, etc. formatter
     },
   })
