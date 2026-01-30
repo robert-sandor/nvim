@@ -134,5 +134,3 @@ vim.filetype.add({
     ['.*/molecule/.*%.ya?ml'] = 'yaml.ansible',
   },
 })
-
--- Auto
