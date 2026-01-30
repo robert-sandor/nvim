@@ -30,18 +30,13 @@ now_if_args(function()
 end)
 
 later(function()
-  require('mini.align').setup()
-  require('mini.bufremove').setup()
-  require('mini.bracketed').setup()
   require('mini.diff').setup()
   require('mini.extra').setup()
   require('mini.git').setup()
   require('mini.indentscope').setup()
   require('mini.jump').setup()
   require('mini.move').setup()
-  require('mini.pairs').setup({ modes = { command = true } })
   require('mini.pick').setup()
-  require('mini.splitjoin').setup()
   require('mini.surround').setup()
   require('mini.trailspace').setup()
 end)
@@ -192,6 +187,7 @@ later(function()
   })
 end)
 
+-- todo: review whether this is any useful really - not using it all that often
 later(function()
   -- Define language patterns to work better with 'friendly-snippets'
   local latex_patterns = { 'latex/**/*.json', '**/latex.json' }

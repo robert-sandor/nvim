@@ -25,16 +25,10 @@ xmap('>', '>gv', 'Indent right and re-select')
 -- This is used to provide 'mini.clue' with extra clues.
 -- Add an entry if you create a new group.
 _G.Config.leader_group_clues = {
-  { mode = 'n', keys = '<Leader>b', desc = '+Buffer' },
   { mode = 'n', keys = '<Leader>e', desc = '+Explore/Edit' },
   { mode = 'n', keys = '<Leader>f', desc = '+Find' },
   { mode = 'n', keys = '<Leader>g', desc = '+Git' },
   { mode = 'n', keys = '<Leader>l', desc = '+Language' },
-  { mode = 'n', keys = '<Leader>m', desc = '+Map' },
-  { mode = 'n', keys = '<Leader>o', desc = '+Other' },
-  { mode = 'n', keys = '<Leader>s', desc = '+Session' },
-  { mode = 'n', keys = '<Leader>t', desc = '+Terminal' },
-  { mode = 'n', keys = '<Leader>v', desc = '+Visits' },
 
   { mode = 'x', keys = '<Leader>g', desc = '+Git' },
   { mode = 'x', keys = '<Leader>l', desc = '+Language' },
@@ -46,21 +40,6 @@ end
 local xmap_leader = function(suffix, rhs, desc)
   vim.keymap.set('x', '<Leader>' .. suffix, rhs, { desc = desc })
 end
-
--- b is for 'Buffer'. Common usage:
--- - `<Leader>bs` - create scratch (temporary) buffer
--- - `<Leader>ba` - navigate to the alternative buffer
--- - `<Leader>bw` - wipeout (fully delete) current buffer
-local new_scratch_buffer = function()
-  vim.api.nvim_win_set_buf(0, vim.api.nvim_create_buf(true, true))
-end
-
-nmap_leader('ba', '<Cmd>b#<CR>', 'Alternate')
-nmap_leader('bd', '<Cmd>lua MiniBufremove.delete()<CR>', 'Delete')
-nmap_leader('bD', '<Cmd>lua MiniBufremove.delete(0, true)<CR>', 'Delete!')
-nmap_leader('bs', new_scratch_buffer, 'Scratch')
-nmap_leader('bw', '<Cmd>lua MiniBufremove.wipeout()<CR>', 'Wipeout')
-nmap_leader('bW', '<Cmd>lua MiniBufremove.wipeout(0, true)<CR>', 'Wipeout!')
 
 -- e is for 'Explore' and 'Edit'. Common usage:
 -- - `<Leader>ed` - open explorer at current working directory
@@ -110,8 +89,6 @@ nmap_leader('fr', '<Cmd>Pick resume<CR>', 'Resume')
 nmap_leader('fR', '<Cmd>Pick lsp scope="references"<CR>', 'References (LSP)')
 nmap_leader('fs', '<Cmd>Pick lsp scope="workspace_symbol"<CR>', 'Symbols workspace')
 nmap_leader('fS', '<Cmd>Pick lsp scope="document_symbol"<CR>', 'Symbols document')
-nmap_leader('fv', '<Cmd>Pick visit_paths cwd=""<CR>', 'Visit paths (all)')
-nmap_leader('fV', '<Cmd>Pick visit_paths<CR>', 'Visit paths (cwd)')
 
 -- g is for 'Git'. Common usage:
 -- - `<Leader>gs` - show information at cursor
@@ -153,55 +130,4 @@ nmap_leader('lr', '<Cmd>lua vim.lsp.buf.rename()<CR>', 'Rename')
 nmap_leader('lR', '<Cmd>lua vim.lsp.buf.references()<CR>', 'References')
 nmap_leader('ls', '<Cmd>lua vim.lsp.buf.definition()<CR>', 'Source definition')
 nmap_leader('lt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', 'Type definition')
-
 xmap_leader('lf', formatting_cmd, 'Format selection')
-
--- m is for 'Map'. Common usage:
--- - `<Leader>mt` - toggle map from 'mini.map' (closed by default)
--- - `<Leader>mf` - focus on the map for fast navigation
--- - `<Leader>ms` - change map's side (if it covers something underneath)
-nmap_leader('mf', '<Cmd>lua MiniMap.toggle_focus()<CR>', 'Focus (toggle)')
-nmap_leader('mr', '<Cmd>lua MiniMap.refresh()<CR>', 'Refresh')
-nmap_leader('ms', '<Cmd>lua MiniMap.toggle_side()<CR>', 'Side (toggle)')
-nmap_leader('mt', '<Cmd>lua MiniMap.toggle()<CR>', 'Toggle')
-
--- o is for 'Other'. Common usage:
--- - `<Leader>oz` - toggle between "zoomed" and regular view of current buffer
-nmap_leader('or', '<Cmd>lua MiniMisc.resize_window()<CR>', 'Resize to default width')
-nmap_leader('ot', '<Cmd>lua MiniTrailspace.trim()<CR>', 'Trim trailspace')
-nmap_leader('oz', '<Cmd>lua MiniMisc.zoom()<CR>', 'Zoom toggle')
-
--- s is for 'Session'. Common usage:
--- - `<Leader>sn` - start new session
--- - `<Leader>sr` - read previously started session
--- - `<Leader>sd` - delete previously started session
-local session_new = 'MiniSessions.write(vim.fn.input("Session name: "))'
-
-nmap_leader('sd', '<Cmd>lua MiniSessions.select("delete")<CR>', 'Delete')
-nmap_leader('sn', '<Cmd>lua ' .. session_new .. '<CR>', 'New')
-nmap_leader('sr', '<Cmd>lua MiniSessions.select("read")<CR>', 'Read')
-nmap_leader('sw', '<Cmd>lua MiniSessions.write()<CR>', 'Write current')
-
--- t is for 'Terminal'
-nmap_leader('tT', '<Cmd>horizontal term<CR>', 'Terminal (horizontal)')
-nmap_leader('tt', '<Cmd>vertical term<CR>', 'Terminal (vertical)')
-
--- v is for 'Visits'. Common usage:
--- - `<Leader>vv` - add    "core" label to current file.
--- - `<Leader>vV` - remove "core" label to current file.
--- - `<Leader>vc` - pick among all files with "core" label.
-local make_pick_core = function(cwd, desc)
-  return function()
-    local sort_latest = MiniVisits.gen_sort.default({ recency_weight = 1 })
-    local local_opts = { cwd = cwd, filter = 'core', sort = sort_latest }
-    MiniExtra.pickers.visit_paths(local_opts, { source = { name = desc } })
-  end
-end
-
-nmap_leader('vc', make_pick_core('', 'Core visits (all)'), 'Core visits (all)')
-nmap_leader('vC', make_pick_core(nil, 'Core visits (cwd)'), 'Core visits (cwd)')
-nmap_leader('vv', '<Cmd>lua MiniVisits.add_label("core")<CR>', 'Add "core" label')
-nmap_leader('vV', '<Cmd>lua MiniVisits.remove_label("core")<CR>', 'Remove "core" label')
-nmap_leader('vl', '<Cmd>lua MiniVisits.add_label()<CR>', 'Add label')
-nmap_leader('vL', '<Cmd>lua MiniVisits.remove_label()<CR>', 'Remove label')
--- stylua: ignore end
