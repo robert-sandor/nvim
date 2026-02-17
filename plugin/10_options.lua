@@ -2,7 +2,7 @@
 vim.g.mapleader = ' ' -- Use `<Space>` as <Leader> key
 
 vim.o.mouse = 'a' -- Enable mouse
-vim.o.mousescroll = 'ver:3,hor:6' -- Customize mouse scroll
+vim.o.mousescroll = 'ver:1,hor:6' -- Customize mouse scroll
 vim.o.switchbuf = 'usetab' -- Use already opened buffers when switching
 vim.o.undofile = true -- Enable persistent undo
 vim.o.confirm = true -- Enable confimation for abandoning buffers, and others
@@ -92,27 +92,25 @@ end, 'Equalize splits on window resized')
 -- Neovim has built-in support for showing diagnostic messages. This configures
 -- a more conservative display while still being useful.
 -- See `:h vim.diagnostic` and `:h vim.diagnostic.config()`.
-local diagnostic_opts = {
-  -- Show signs on top of any other sign, but only for warnings and errors
-  signs = { priority = 9999, severity = { min = 'WARN', max = 'ERROR' } },
-
-  -- Show all diagnostics as underline (for their messages type `<Leader>ld`)
-  underline = { severity = { min = 'HINT', max = 'ERROR' } },
-
-  -- Show more details immediately for errors on the current line
-  virtual_lines = false,
-  virtual_text = {
-    current_line = true,
-    severity = { min = 'ERROR', max = 'ERROR' },
-  },
-
-  -- Don't update diagnostics when typing
-  update_in_insert = false,
-}
-
 -- Use `later()` to avoid sourcing `vim.diagnostic` on startup
 require('mini.deps').later(function()
-  vim.diagnostic.config(diagnostic_opts)
+  vim.diagnostic.config({
+    -- Show signs on top of any other sign, but only for warnings and errors
+    signs = { priority = 9999, severity = { min = 'WARN', max = 'ERROR' } },
+
+    -- Show all diagnostics as underline (for their messages type `<Leader>ld`)
+    underline = { severity = { min = 'HINT', max = 'ERROR' } },
+
+    -- Show more details immediately for errors on the current line
+    virtual_lines = false,
+    virtual_text = {
+      current_line = true,
+      severity = { min = 'WARN', max = 'ERROR' },
+    },
+
+    -- Don't update diagnostics when typing
+    update_in_insert = false,
+  })
 end)
 
 -- Filetypes
