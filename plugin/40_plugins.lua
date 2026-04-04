@@ -16,7 +16,7 @@ end)
 now_if_args(function()
   add({
     source = 'nvim-treesitter/nvim-treesitter',
-    checkout = 'main',
+    checkout = vim.fn.has('nvim-0.12') == 0 and '7caec274fd19c12b55902a5b795100d21531391f' or 'main',
     hooks = {
       post_checkout = function()
         vim.cmd('TSUpdate')
