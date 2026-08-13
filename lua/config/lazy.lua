@@ -26,7 +26,7 @@ require("lazy").setup({
   },
   -- set defaults for plugins
   defaults = { lazy = false, version = false },
-  install = { colorscheme = { "catppuccin-moca", "habamax" } },
+  install = { colorscheme = { "catppuccin-mocha", "habamax" } },
   -- enable automatic update checker
   checker = { enabled = true, notify = false },
   -- disable some rtp plugins
