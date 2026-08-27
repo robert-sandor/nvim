@@ -12,9 +12,6 @@ vim.o.relativenumber = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
--- Sync clipboard between OS and Neovim. Schedule the setting after `UiEnter` because it can increase startup-time.
-vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
-
 -- Disable showing the mode, statusbard will show it
 vim.o.showmode = false
 

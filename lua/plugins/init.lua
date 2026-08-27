@@ -3,8 +3,8 @@ local function gh(repo) return 'https://github.com/' .. repo end
 vim.pack.add({
   { src = gh('catppuccin/nvim'), name = 'catppuccin' },
   gh('nvim-mini/mini.nvim'),
+  gh('folke/snacks.nvim'),
   gh('lewis6991/gitsigns.nvim'),
-  gh('ibhagwan/fzf-lua'),
   gh('j-hui/fidget.nvim'),
   gh('neovim/nvim-lspconfig'),
   gh('stevearc/conform.nvim'),
@@ -16,8 +16,8 @@ vim.pack.add({
 })
 
 require('plugins.catppuccin')
-require('plugins.fzflua')
 require('plugins.mini')
+require('plugins.snacks')
 require('plugins.treesitter')
 require('plugins.fidget')
 require('plugins.conform')

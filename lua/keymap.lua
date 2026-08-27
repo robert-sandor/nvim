@@ -1,6 +1,11 @@
 -- Clear highlights on escape
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Copy and paste from system clipboard
+vim.keymap.set({ 'n', 'x' }, '<leader>y', '"+y', { desc = '[Y]ank to system clipboard' })
+vim.keymap.set('n', '<leader>p', '"+p', { desc = '[P]aste from system clipboard' })
+vim.keymap.set('x', '<leader>p', '"+P', { desc = '[P]aste from system clipboard' })
+
 -- Open diagnostics
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -17,21 +22,3 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
--- Lazygit
-local function open_lazygit()
-  local height = math.floor(vim.o.lines * 0.9)
-  local width = math.floor(vim.o.columns * 0.9)
-
-  vim.api.nvim_open_win(vim.api.nvim_create_buf(false, true), true, {
-    relative = 'editor',
-    height = height,
-    width = width,
-    row = math.floor((vim.o.lines - height) / 2),
-    col = math.floor((vim.o.columns - width) / 2),
-  })
-
-  vim.cmd.term('lazygit')
-end
-
-vim.keymap.set('n', '<leader>g', open_lazygit, { desc = 'Open Lazy[G]it' })
