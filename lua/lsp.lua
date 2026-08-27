@@ -1,6 +1,7 @@
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('stylua')
 vim.lsp.enable('ansiblels')
+vim.lsp.enable('pyright')
 
 -- Autocommand on lsp attached
 vim.api.nvim_create_autocmd('LspAttach', {

@@ -1,7 +1,9 @@
 require('conform').setup({
   format_on_save = { timeout_ms = 500 },
   default_format_opts = { lsp_format = 'fallback' },
-  formatters_by_ft = {},
+  formatters_by_ft = {
+    python = { 'isort', 'black' },
+  },
 })
 
 vim.keymap.set(
