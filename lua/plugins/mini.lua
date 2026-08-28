@@ -15,19 +15,25 @@ require('mini.surround').setup()
 -- Easily move selection up/down
 require('mini.move').setup()
 
+-- Picker
+require('mini.pick').setup()
+
+vim.keymap.set('n', '<leader>f', '<cmd>Pick files<CR>', { desc = 'Open [F]ile picker' })
+vim.keymap.set('n', '<leader>b', '<cmd>Pick buffers<CR>', { desc = 'Open [B]uffer picker' })
+vim.keymap.set('n', '<leader>/', '<cmd>Pick grep_live<CR>', { desc = '[/] Global search in workspace' })
+
 -- File manager
 require('mini.files').setup({
   windows = {
     max_number = 3,
     preview = true,
-    width_preview = 50
-  }
+    width_preview = 50,
+  },
 })
 
 local function toggle_minifiles()
-  if MiniFiles.close() == nil then
-    MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
-  end
+  local minifiles = require('mini.files')
+  if minifiles.close() == nil then minifiles.open(vim.api.nvim_buf_get_name(0), false) end
 end
 
 vim.keymap.set('n', '<leader>e', toggle_minifiles, { desc = '[E]xplore files' })
