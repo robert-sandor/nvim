@@ -1,7 +1,14 @@
+-- Lua
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('stylua')
+-- Ansible
 vim.lsp.enable('ansiblels')
+-- Python
 vim.lsp.enable('pyright')
+-- YAML
+vim.lsp.enable('yamlls')
+-- TOML
+vim.lsp.enable('tombi')
 
 -- Autocommand on lsp attached
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -45,4 +52,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
       })
     end
   end,
+})
+
+vim.filetype.add({
+  pattern = {
+    -- Match both .yml and .yaml variants for docker-compose files
+    ['docker-compose%.ya?ml'] = 'yaml.docker-compose',
+    ['compose%.ya?ml'] = 'yaml.docker-compose',
+  },
 })

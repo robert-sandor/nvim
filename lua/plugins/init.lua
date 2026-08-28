@@ -13,6 +13,7 @@ vim.pack.add({
   { src = gh('nvim-treesitter/nvim-treesitter'), version = 'main' },
   { src = gh('nvim-treesitter/nvim-treesitter-textobjects'), version = 'main' },
   gh('mfussenegger/nvim-ansible'), -- Specific to Ansible
+  gh('b0o/SchemaStore.nvim'),
 })
 
 require('plugins.catppuccin')
