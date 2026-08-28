@@ -4,8 +4,6 @@ vim.pack.add({
   { src = gh('catppuccin/nvim'), name = 'catppuccin' },
   gh('nvim-mini/mini.nvim'),
   gh('folke/snacks.nvim'),
-  gh('lewis6991/gitsigns.nvim'),
-  gh('j-hui/fidget.nvim'),
   gh('neovim/nvim-lspconfig'),
   gh('stevearc/conform.nvim'),
   { src = gh('saghen/blink.cmp'), version = vim.version.range('1.*') },
@@ -20,7 +18,6 @@ require('plugins.catppuccin')
 require('plugins.mini')
 require('plugins.snacks')
 require('plugins.treesitter')
-require('plugins.fidget')
 require('plugins.conform')
 require('plugins.lint')
 require('plugins.blink')

@@ -15,6 +15,13 @@ require('mini.surround').setup()
 -- Easily move selection up/down
 require('mini.move').setup()
 
+-- Notify
+require('mini.notify').setup()
+
+-- Git
+require('mini.diff').setup()
+require('mini.git').setup()
+
 -- Picker
 require('mini.pick').setup()
 
