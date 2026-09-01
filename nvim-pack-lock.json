@@ -13,6 +13,14 @@
       "rev": "edefef779ab08ce1a4a404713e3012b0d202bd35",
       "src": "https://github.com/catppuccin/nvim"
     },
+    "chezmoi.nvim": {
+      "rev": "4167bbec76f693f481a5243f1be521ff0ccf1a6d",
+      "src": "https://github.com/xvzc/chezmoi.nvim"
+    },
+    "chezmoi.vim": {
+      "rev": "7a498ea65f658993237fb0469001bdf71f68cf94",
+      "src": "https://github.com/alker0/chezmoi.vim"
+    },
     "conform.nvim": {
       "rev": "016802de402556da54c36bd7359b441266b01cdd",
       "src": "https://github.com/stevearc/conform.nvim"
@@ -50,6 +58,10 @@
       "rev": "898ee307df58f854d11cd7edd06472574d48014e",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
       "version": "'main'"
+    },
+    "plenary.nvim": {
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "snacks.nvim": {
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
